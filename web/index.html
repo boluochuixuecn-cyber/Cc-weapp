@@ -3,84 +3,204 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CC UI Web 示例与文档</title>
+  <title>CC UI Web 文档与示例</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, PingFang SC, Noto Sans SC, "Microsoft YaHei", sans-serif; margin: 0; padding: 24px; color: #222; }
-    h1 { font-size: 22px; }
-    h2 { font-size: 18px; margin-top: 32px; }
-    .card { border: 1px solid #eee; border-radius: 12px; padding: 16px; margin: 16px 0; }
-    pre { background: #f7f8fa; padding: 12px; overflow: auto; border-radius: 8px; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 13px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-    a { color: #1989fa; text-decoration: none; }
+    :root {
+      --bg: #fff;
+      --text: #1f2328;
+      --muted: #57606a;
+      --brand: #1989fa;
+      --border: #e5e6eb;
+      --code-bg: #f6f8fa;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, PingFang SC, Noto Sans SC, "Microsoft YaHei", sans-serif; }
+    a { color: var(--brand); text-decoration: none; }
+    .layout { display: grid; grid-template-columns: 260px 1fr 420px; gap: 0; height: 100vh; }
+    .sidebar { border-right: 1px solid var(--border); padding: 16px; overflow: auto; }
+    .sidebar h1 { margin: 0 0 12px; font-size: 18px; }
+    .nav { list-style: none; padding: 0; margin: 0; }
+    .nav li { margin: 6px 0; }
+    .nav a { display: block; padding: 8px 10px; border-radius: 8px; color: var(--text); }
+    .nav a.active, .nav a:hover { background: #f2f8ff; color: var(--brand); }
+
+    .content { padding: 24px 32px 64px; overflow: auto; }
+    .content h2 { margin: 24px 0 12px; font-size: 22px; }
+    .content h3 { margin: 18px 0 8px; font-size: 16px; color: var(--muted); }
+    .card { border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 16px 0; background: #fff; }
+    .code { background: var(--code-bg); border: 1px solid var(--border); padding: 12px; border-radius: 8px; overflow: auto; }
+    pre { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 13px; }
+
+    .preview { border-left: 1px solid var(--border); padding: 16px; position: sticky; top: 0; height: 100vh; overflow: auto; }
+    .preview h2 { font-size: 18px; margin: 0 0 12px; }
+    .phone { width: 375px; height: 667px; border: 10px solid #111; border-radius: 28px; margin: 0 auto; background: #fafafa; position: relative; overflow: hidden; }
+    .phone .screen { position: absolute; inset: 0; overflow: auto; padding: 16px; }
+    .tag { display: inline-block; padding: 2px 8px; font-size: 12px; background: #f2f4f8; border-radius: 999px; color: #6b778c; margin-right: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; }
+    th { color: var(--muted); font-weight: 600; }
   </style>
 </head>
 <body>
-  <h1>CC UI - 网页版示例与文档</h1>
-  <p>本页面为静态示例，帮助快速浏览组件 API 与代码片段。真实效果请在「微信开发者工具」中打开 <code>pages/index/index</code> 进行预览。</p>
+  <div class="layout">
+    <aside class="sidebar">
+      <h1>CC UI</h1>
+      <ul class="nav" id="nav">
+        <li><a href="#popup" class="active">Popup 弹出层</a></li>
+        <li><a href="#button">Button 按钮</a></li>
+        <li><a href="#toast">Toast 轻提示</a></li>
+        <li><a href="#dialog">Dialog 对话框</a></li>
+        <li><a href="#overlay">Overlay 遮罩层</a></li>
+        <li><a href="#icon">Icon 图标</a></li>
+      </ul>
+    </aside>
 
-  <div class="card">
-    <h2>快速开始</h2>
-    <p>在页面 <code>index.json</code> 引入需要的组件：</p>
-    <pre><code>{
+    <main class="content" id="content">
+      <section id="popup">
+        <h2>Popup 弹出层</h2>
+        <div class="card"><span class="tag">介绍</span> 弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。</div>
+        <div class="card">
+          <h3>引入</h3>
+          <div class="code"><pre>{
   "usingComponents": {
-    "cc-popup": "/components/cc-ui/popup/popup",
-    "cc-button": "/components/cc-ui/button/button",
-    "cc-toast": "/components/cc-ui/toast/toast",
-    "cc-dialog": "/components/cc-ui/dialog/dialog",
-    "cc-icon": "/components/cc-ui/icon/icon"
+    "cc-popup": "/components/cc-ui/popup/popup"
   }
-}</code></pre>
-  </div>
+}</pre></div>
+        </div>
+        <div class="card">
+          <h3>代码演示</h3>
+          <div class="code"><pre>&lt;cc-button title="展示弹出层" bind:tap="showPopup" /&gt;
+&lt;cc-popup show="{{ show }}" bind:close="onClose"&gt;内容&lt;/cc-popup&gt;</pre></div>
+        </div>
+        <div class="card">
+          <h3>功能用法 demo</h3>
+          <p>位置、关闭图标、圆角、安全区、遮罩点击关闭等。</p>
+        </div>
+        <div class="card">
+          <h3>API</h3>
+          <table>
+            <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>
+            <tbody>
+              <tr><td>show</td><td>是否显示</td><td>boolean</td><td>false</td></tr>
+              <tr><td>position</td><td>弹出位置</td><td>string</td><td>center</td></tr>
+              <tr><td>overlay</td><td>是否显示遮罩</td><td>boolean</td><td>true</td></tr>
+              <tr><td>zIndex</td><td>层级</td><td>number</td><td>1000</td></tr>
+              <tr><td>duration</td><td>动画时长</td><td>number</td><td>300</td></tr>
+              <tr><td>round</td><td>是否圆角</td><td>boolean</td><td>false</td></tr>
+              <tr><td>closeOnClickOverlay</td><td>点击遮罩关闭</td><td>boolean</td><td>true</td></tr>
+              <tr><td>closeable</td><td>显示关闭图标</td><td>boolean</td><td>false</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Events</h3>
+          <table>
+            <thead><tr><th>事件名</th><th>说明</th></tr></thead>
+            <tbody>
+              <tr><td>bind:close</td><td>关闭弹出层时触发</td></tr>
+              <tr><td>bind:click-overlay</td><td>点击遮罩层时触发</td></tr>
+              <tr><td>bind:before-enter</td><td>进入前触发</td></tr>
+              <tr><td>bind:after-enter</td><td>进入后触发</td></tr>
+              <tr><td>bind:after-leave</td><td>离开后触发</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-  <div class="grid">
-    <div class="card">
-      <h2>Popup 弹出层</h2>
-      <p>弹出层容器，用于展示弹窗、信息提示等内容。</p>
-      <pre><code>&lt;cc-button type="primary" bind:tap="showPopup"&gt;展示弹出层&lt;/cc-button&gt;
-&lt;cc-popup show="{{ show }}" bind:close="onClose"&gt;内容&lt;/cc-popup&gt;</code></pre>
-      <a href="../README.md#popup-弹出层">查看 API</a>
-    </div>
+      <section id="button">
+        <h2>Button 按钮</h2>
+        <div class="card"><span class="tag">介绍</span> 操作触发器，支持多尺寸、朴素、块级、圆角、发起表单等。</div>
+        <div class="card">
+          <h3>引入</h3>
+          <div class="code"><pre>{ "usingComponents": { "cc-button": "/components/cc-ui/button/button" } }</pre></div>
+        </div>
+        <div class="card"><h3>代码演示</h3><div class="code"><pre>&lt;cc-button type="primary"&gt;主要按钮&lt;/cc-button&gt;</pre></div></div>
+        <div class="card"><h3>API</h3><div>type / size / plain / block / round / hairline / disabled / loading / loadingText / openType / formType / color / customStyle</div></div>
+        <div class="card"><h3>Events</h3><div>bind:tap</div></div>
+      </section>
 
-    <div class="card">
-      <h2>Button 按钮</h2>
-      <p>支持多尺寸、朴素、块级、圆角、加载等。</p>
-      <pre><code>&lt;cc-button type="primary"&gt;主要按钮&lt;/cc-button&gt;</code></pre>
-      <a href="../README.md#button-按钮">查看 API</a>
-    </div>
-
-    <div class="card">
-      <h2>Toast 轻提示</h2>
-      <p>用于轻量级操作反馈与状态提示。</p>
-      <pre><code>// wxml
-&lt;cc-toast id="ccToast" /&gt;
+      <section id="toast">
+        <h2>Toast 轻提示</h2>
+        <div class="card"><span class="tag">介绍</span> 轻量级反馈，支持文本与加载中。</div>
+        <div class="card"><h3>引入</h3><div class="code"><pre>{ "usingComponents": { "cc-toast": "/components/cc-ui/toast/toast" } }</pre></div></div>
+        <div class="card"><h3>代码演示</h3><div class="code"><pre>// wxml
+&lt;cc-toast id="toast" /&gt;
 // js
-const toast = this.selectComponent('#ccToast');
-toast.showToast({ message: '操作成功' });</code></pre>
-      <a href="../README.md#toast-轻提示">查看 API</a>
-    </div>
+const toast = this.selectComponent('#toast');
+toast.showToast({ message: '操作成功' });</pre></div></div>
+        <div class="card"><h3>API</h3><div>show / type / message / duration / zIndex / position / forbidClick</div></div>
+        <div class="card"><h3>Events</h3><div>bind:open / bind:close</div></div>
+      </section>
 
-    <div class="card">
-      <h2>Dialog 对话框</h2>
-      <p>模态确认框，支持异步关闭。</p>
-      <pre><code>// wxml
-&lt;cc-dialog id="ccDialog" bind:confirm="onConfirm" bind:cancel="onCancel" /&gt;
+      <section id="dialog">
+        <h2>Dialog 对话框</h2>
+        <div class="card"><span class="tag">介绍</span> 模态确认框，支持同步与异步关闭。</div>
+        <div class="card"><h3>引入</h3><div class="code"><pre>{ "usingComponents": { "cc-dialog": "/components/cc-ui/dialog/dialog" } }</pre></div></div>
+        <div class="card"><h3>代码演示</h3><div class="code"><pre>// wxml
+&lt;cc-dialog id="dialog" bind:confirm="onConfirm" bind:cancel="onCancel" /&gt;
 // js
-const dialog = this.selectComponent('#ccDialog');
-dialog.open({ title: '提示', message: '确认执行该操作？' });</code></pre>
-      <a href="../README.md#dialog-对话框">查看 API</a>
-    </div>
+const dialog = this.selectComponent('#dialog');
+dialog.open({ title: '提示', message: '确认执行该操作？' });</pre></div></div>
+        <div class="card"><h3>API</h3><div>show / title / message / showCancelButton / cancelText / confirmText / closeOnClickOverlay / asyncClose</div></div>
+        <div class="card"><h3>Events</h3><div>bind:open / bind:close / bind:confirm / bind:cancel</div></div>
+      </section>
 
-    <div class="card">
-      <h2>Icon 图标</h2>
-      <p>内置基础形状，可扩展 iconfont。</p>
-      <pre><code>&lt;cc-icon name="success" size="40" /&gt;</code></pre>
-      <a href="../README.md#icon-图标">查看 API</a>
-    </div>
+      <section id="overlay">
+        <h2>Overlay 遮罩层</h2>
+        <div class="card"><span class="tag">介绍</span> 浮层遮罩，用于信息聚焦与阻断背景交互。</div>
+        <div class="card"><h3>引入</h3><div class="code"><pre>{ "usingComponents": { "overlay": "/components/cc-ui/overlay/overlay" } }</pre></div></div>
+        <div class="card"><h3>代码演示</h3><div class="code"><pre>&lt;overlay show="{{show}}" bind:close="onClose" /&gt;</pre></div></div>
+        <div class="card"><h3>API</h3><div>show / closeOnClick / zIndex</div></div>
+        <div class="card"><h3>Events</h3><div>bind:close</div></div>
+      </section>
+
+      <section id="icon">
+        <h2>Icon 图标</h2>
+        <div class="card"><span class="tag">介绍</span> 内置基础形状图标（可扩展 iconfont）。</div>
+        <div class="card"><h3>引入</h3><div class="code"><pre>{ "usingComponents": { "cc-icon": "/components/cc-ui/icon/icon" } }</pre></div></div>
+        <div class="card"><h3>代码演示</h3><div class="code"><pre>&lt;cc-icon name="success" size="40" /&gt;</pre></div></div>
+        <div class="card"><h3>API</h3><div>name / size / color / customStyle</div></div>
+        <div class="card"><h3>Events</h3><div>（无）</div></div>
+      </section>
+    </main>
+
+    <aside class="preview">
+      <h2>右侧预览</h2>
+      <div class="phone">
+        <div class="screen" id="preview">
+          <p>此处为预览示意。真实交互请在「微信开发者工具」中打开 <code>pages/index/index</code>。</p>
+          <p>在左侧切换组件，右侧保持显示该组件的示意内容。</p>
+        </div>
+      </div>
+    </aside>
   </div>
 
-  <div class="card">
-    <p>更多内容与详细说明请查看仓库根目录的 <a href="../README.md">README.md</a>。</p>
-  </div>
+  <script>
+    const nav = document.getElementById('nav');
+    const links = nav.querySelectorAll('a');
+    const content = document.getElementById('content');
+    const sections = content.querySelectorAll('section');
+
+    function setActive(hash) {
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
+    }
+    function onScroll() {
+      let current = '#popup';
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          current = '#' + sec.id;
+        }
+      });
+      setActive(current);
+    }
+    content.addEventListener('scroll', onScroll, { passive: true });
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      setActive(a.getAttribute('href'));
+    });
+    setActive('#popup');
+  </script>
 </body>
 </html> 

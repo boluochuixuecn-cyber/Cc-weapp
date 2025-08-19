@@ -1,6 +1,22 @@
 <view class="page">
-  <demo-block title="确认对话框">
+  <view class="section">
+    <view class="section__title">介绍</view>
+    <view>模态确认框，支持同步与异步关闭。</view>
+  </view>
+  <view class="section">
+    <view class="section__title">引入</view>
+    <view class="code">{ "usingComponents": { "cc-dialog": "/components/cc-ui/dialog/dialog" } }</view>
+  </view>
+  <demo-block title="代码演示 / 确认对话框">
     <cc-button type="primary" bind:tap="openDialog">打开 Dialog</cc-button>
   </demo-block>
   <cc-dialog id="dialog" bind:confirm="onConfirm" bind:cancel="onCancel" />
+  <view class="section">
+    <view class="section__title">API</view>
+    <view>show / title / message / showCancelButton / cancelText / confirmText / closeOnClickOverlay / asyncClose</view>
+  </view>
+  <view class="section">
+    <view class="section__title">Events</view>
+    <view>bind:open / bind:close / bind:confirm / bind:cancel</view>
+  </view>
 </view>

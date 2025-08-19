@@ -1,5 +1,14 @@
 <view class="page">
-  <demo-block title="文字提示">
+  <view class="section">
+    <view class="section__title">介绍</view>
+    <view>轻量级操作反馈，支持文本和加载中两种样式。</view>
+  </view>
+  <view class="section">
+    <view class="section__title">引入</view>
+    <view class="code">{ "usingComponents": { "cc-toast": "/components/cc-ui/toast/toast" } }</view>
+  </view>
+
+  <demo-block title="代码演示 / 文字提示">
     <cc-button type="primary" bind:tap="showText">显示文字 Toast</cc-button>
   </demo-block>
   <demo-block title="加载中">
@@ -7,4 +16,13 @@
   </demo-block>
 
   <cc-toast id="toast" />
+
+  <view class="section">
+    <view class="section__title">API</view>
+    <view>show / type / message / duration / zIndex / position / forbidClick</view>
+  </view>
+  <view class="section">
+    <view class="section__title">Events</view>
+    <view>bind:open / bind:close</view>
+  </view>
 </view>

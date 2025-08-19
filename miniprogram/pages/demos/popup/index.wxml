@@ -1,5 +1,13 @@
 <view class="page">
-  <demo-block title="不同位置">
+  <view class="section">
+    <view class="section__title">介绍</view>
+    <view>弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。</view>
+  </view>
+  <view class="section">
+    <view class="section__title">引入</view>
+    <view class="code">{ "usingComponents": { "cc-popup": "/components/cc-ui/popup/popup" } }</view>
+  </view>
+  <demo-block title="代码演示 / 不同位置">
     <cc-button type="primary" bind:tap="open('center')">居中弹出</cc-button>
     <cc-button type="primary" bind:tap="open('bottom')">底部弹出</cc-button>
     <cc-button type="primary" bind:tap="open('top')">顶部弹出</cc-button>
@@ -10,4 +18,13 @@
   <cc-popup show="{{show}}" position="{{position}}" bind:close="onClose">
     <view class="cc-popup__content">这是一个 {{position}} 弹窗</view>
   </cc-popup>
+
+  <view class="section">
+    <view class="section__title">API</view>
+    <view>show / position / overlay / zIndex / duration / round / closeOnClickOverlay / closeable / closeIcon / closeIconPosition / safeAreaInsetBottom / safeAreaInsetTop / safeAreaTabBar</view>
+  </view>
+  <view class="section">
+    <view class="section__title">Events</view>
+    <view>bind:close / bind:click-overlay / bind:before-enter / bind:after-enter / bind:after-leave</view>
+  </view>
 </view>

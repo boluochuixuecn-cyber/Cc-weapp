@@ -1,5 +1,15 @@
 <view class="page">
-  <demo-block title="按钮类型">
+  <view class="section">
+    <view class="section__title">介绍</view>
+    <view>操作触发器，支持多尺寸、朴素、块级、圆角、发起表单等。</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">引入</view>
+    <view class="code">{ "usingComponents": { "cc-button": "/components/cc-ui/button/button" } }</view>
+  </view>
+
+  <demo-block title="代码演示 / 按钮类型">
     <cc-button type="primary">主要按钮</cc-button>
     <cc-button type="success">成功按钮</cc-button>
     <cc-button type="warning">警告按钮</cc-button>
@@ -13,6 +23,16 @@
 
   <demo-block title="禁用&加载">
     <cc-button type="primary" disabled>禁用</cc-button>
-    <cc-button type="primary" loading>加载中</cc-button>
+    <cc-button type="primary" loading loadingText="加载中">加载中</cc-button>
   </demo-block>
+
+  <view class="section">
+    <view class="section__title">API</view>
+    <view>type / size / plain / block / round / hairline / disabled / loading / loadingText / openType / formType / color / customStyle</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">Events</view>
+    <view>bind:tap</view>
+  </view>
 </view>

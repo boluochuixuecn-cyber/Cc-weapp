@@ -1,5 +1,21 @@
 <view class="page">
-  <demo-block title="内置图标">
+  <view class="section">
+    <view class="section__title">介绍</view>
+    <view>内置基础形状图标（可扩展 iconfont）。</view>
+  </view>
+  <view class="section">
+    <view class="section__title">引入</view>
+    <view class="code">{ "usingComponents": { "cc-icon": "/components/cc-ui/icon/icon" } }</view>
+  </view>
+  <demo-block title="代码演示 / 内置图标">
     <cc-icon name="success" size="48" />
   </demo-block>
+  <view class="section">
+    <view class="section__title">API</view>
+    <view>name / size / color / customStyle</view>
+  </view>
+  <view class="section">
+    <view class="section__title">Events</view>
+    <view>（无）</view>
+  </view>
 </view>

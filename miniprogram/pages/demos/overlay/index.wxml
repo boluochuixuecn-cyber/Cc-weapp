@@ -1,6 +1,22 @@
 <view class="page">
-  <demo-block title="遮罩层">
+  <view class="section">
+    <view class="section__title">介绍</view>
+    <view>浮层遮罩，用于信息聚焦与阻断背景交互。</view>
+  </view>
+  <view class="section">
+    <view class="section__title">引入</view>
+    <view class="code">{ "usingComponents": { "overlay": "/components/cc-ui/overlay/overlay" } }</view>
+  </view>
+  <demo-block title="代码演示 / 遮罩层">
     <cc-button type="primary" bind:tap="open">打开遮罩</cc-button>
   </demo-block>
   <overlay show="{{show}}" bind:close="close" />
+  <view class="section">
+    <view class="section__title">API</view>
+    <view>show / closeOnClick / zIndex</view>
+  </view>
+  <view class="section">
+    <view class="section__title">Events</view>
+    <view>bind:close</view>
+  </view>
 </view>
