@@ -1,4 +1,7 @@
-<overlay show="{{show}}" z-index="{{zIndex}}" bind:close="onOverlayClose" />
-<view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }} custom-class {{ safeAreaInsetBottom ? 'cc-safe-area-bottom' : '' }}" style="z-index: {{zIndex + 1}};" catchtouchmove="noop" bindtransitionend="onTransitionEnd">
+<overlay wx:if="{{overlay}}" show="{{show}}" z-index="{{zIndex}}" style="{{overlayStyle}}" bind:close="onOverlayClose" />
+<view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }} custom-class {{ round ? 'is-round' : '' }} {{ safeAreaInsetBottom ? 'cc-safe-area-bottom' : '' }} {{ safeAreaInsetTop ? 'cc-safe-area-top' : '' }} {{ safeAreaTabBar ? 'cc-safe-area-tabbar' : '' }}" style="z-index: {{zIndex + 1}}; transition-duration: {{duration}}ms;" catchtouchmove="noop" bindtransitionstart="onTransitionStart" bindtransitionend="onTransitionEnd">
   <slot />
+  <view wx:if="{{closeable}}" class="cc-popup__close cc-popup__close--{{closeIconPosition}}" bindtap="onOverlayClose">
+    <text class="cc-popup__close-icon">{{closeIcon}}</text>
+  </view>
 </view>

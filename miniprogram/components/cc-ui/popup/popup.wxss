@@ -31,3 +31,20 @@
 
 /* Safe area helper */
 .cc-safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.cc-safe-area-top { padding-top: env(safe-area-inset-top); }
+.cc-safe-area-tabbar { padding-bottom: 112rpx; }
+
+/* Round modifier */
+.is-round.cc-popup--center { border-radius: 24rpx; }
+.is-round.cc-popup--top { border-bottom-left-radius: 24rpx; border-bottom-right-radius: 24rpx; }
+.is-round.cc-popup--bottom { border-top-left-radius: 24rpx; border-top-right-radius: 24rpx; }
+.is-round.cc-popup--left { border-top-right-radius: 24rpx; border-bottom-right-radius: 24rpx; }
+.is-round.cc-popup--right { border-top-left-radius: 24rpx; border-bottom-left-radius: 24rpx; }
+
+/* Close icon */
+.cc-popup__close { position: absolute; z-index: 1; padding: 12rpx; color: #969799; }
+.cc-popup__close-icon { font-size: 36rpx; }
+.cc-popup__close--top-right { top: 8rpx; right: 8rpx; }
+.cc-popup__close--top-left { top: 8rpx; left: 8rpx; }
+.cc-popup__close--bottom-right { bottom: 8rpx; right: 8rpx; }
+.cc-popup__close--bottom-left { bottom: 8rpx; left: 8rpx; }
