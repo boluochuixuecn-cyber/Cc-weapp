@@ -1,0 +1,10 @@
+<view class="page">
+  <demo-block title="文字提示">
+    <cc-button type="primary" bind:tap="showText">显示文字 Toast</cc-button>
+  </demo-block>
+  <demo-block title="加载中">
+    <cc-button type="primary" bind:tap="showLoading">显示 Loading</cc-button>
+  </demo-block>
+
+  <cc-toast id="toast" />
+</view>

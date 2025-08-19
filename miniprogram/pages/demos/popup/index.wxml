@@ -1,0 +1,13 @@
+<view class="page">
+  <demo-block title="不同位置">
+    <cc-button type="primary" bind:tap="open('center')">居中弹出</cc-button>
+    <cc-button type="primary" bind:tap="open('bottom')">底部弹出</cc-button>
+    <cc-button type="primary" bind:tap="open('top')">顶部弹出</cc-button>
+    <cc-button type="primary" bind:tap="open('left')">左侧弹出</cc-button>
+    <cc-button type="primary" bind:tap="open('right')">右侧弹出</cc-button>
+  </demo-block>
+
+  <cc-popup show="{{show}}" position="{{position}}" bind:close="onClose">
+    <view class="cc-popup__content">这是一个 {{position}} 弹窗</view>
+  </cc-popup>
+</view>

@@ -1,0 +1,6 @@
+<view class="page">
+  <demo-block title="确认对话框">
+    <cc-button type="primary" bind:tap="openDialog">打开 Dialog</cc-button>
+  </demo-block>
+  <cc-dialog id="dialog" bind:confirm="onConfirm" bind:cancel="onCancel" />
+</view>

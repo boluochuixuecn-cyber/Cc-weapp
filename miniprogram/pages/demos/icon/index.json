@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cc-icon": "/components/cc-ui/icon/icon",
+    "demo-block": "/components/demo/demo-block/demo-block"
+  },
+  "navigationBarTitleText": "Icon"
+}

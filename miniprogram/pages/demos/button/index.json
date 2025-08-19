@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cc-button": "/components/cc-ui/button/button",
+    "demo-block": "/components/demo/demo-block/demo-block"
+  },
+  "navigationBarTitleText": "Button"
+}

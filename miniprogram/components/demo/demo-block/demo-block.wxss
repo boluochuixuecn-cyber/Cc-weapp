@@ -1,0 +1,4 @@
+.demo-block { padding: 24rpx; background: #fff; margin-bottom: 24rpx; }
+.demo-block__title { font-size: 28rpx; font-weight: 600; margin-bottom: 12rpx; }
+.demo-block__desc { font-size: 24rpx; color: #646566; margin-bottom: 16rpx; }
+.demo-block__body > * + * { margin-top: 16rpx; }

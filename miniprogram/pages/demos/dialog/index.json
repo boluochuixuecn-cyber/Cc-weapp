@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "cc-button": "/components/cc-ui/button/button",
+    "cc-dialog": "/components/cc-ui/dialog/dialog",
+    "demo-block": "/components/demo/demo-block/demo-block"
+  },
+  "navigationBarTitleText": "Dialog"
+}

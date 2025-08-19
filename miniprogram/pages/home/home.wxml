@@ -1,0 +1,15 @@
+<view class="home">
+  <view class="home__header">CC UI 组件示例</view>
+  <view class="home__group">
+    <view class="home__group-title">基础</view>
+    <navigator class="home__item cc-hairline" url="/pages/demos/button/index">Button 按钮</navigator>
+    <navigator class="home__item cc-hairline" url="/pages/demos/icon/index">Icon 图标</navigator>
+  </view>
+  <view class="home__group">
+    <view class="home__group-title">反馈</view>
+    <navigator class="home__item cc-hairline" url="/pages/demos/toast/index">Toast 轻提示</navigator>
+    <navigator class="home__item cc-hairline" url="/pages/demos/dialog/index">Dialog 弹窗</navigator>
+    <navigator class="home__item cc-hairline" url="/pages/demos/popup/index">Popup 弹出层</navigator>
+    <navigator class="home__item cc-hairline" url="/pages/demos/overlay/index">Overlay 遮罩</navigator>
+  </view>
+</view>

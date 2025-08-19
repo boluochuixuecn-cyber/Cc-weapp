@@ -1,0 +1,18 @@
+<view class="page">
+  <demo-block title="按钮类型">
+    <cc-button type="primary">主要按钮</cc-button>
+    <cc-button type="success">成功按钮</cc-button>
+    <cc-button type="warning">警告按钮</cc-button>
+    <cc-button type="danger">危险按钮</cc-button>
+  </demo-block>
+
+  <demo-block title="朴素&块级">
+    <cc-button type="primary" plain>朴素按钮</cc-button>
+    <cc-button type="primary" block>块级按钮</cc-button>
+  </demo-block>
+
+  <demo-block title="禁用&加载">
+    <cc-button type="primary" disabled>禁用</cc-button>
+    <cc-button type="primary" loading>加载中</cc-button>
+  </demo-block>
+</view>

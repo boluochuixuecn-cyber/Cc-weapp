@@ -1,0 +1,5 @@
+<view class="page">
+  <demo-block title="内置图标">
+    <cc-icon name="success" size="48" />
+  </demo-block>
+</view>

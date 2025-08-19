@@ -1,5 +1,12 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/demos/button/index",
+    "pages/demos/icon/index",
+    "pages/demos/popup/index",
+    "pages/demos/toast/index",
+    "pages/demos/dialog/index",
+    "pages/demos/overlay/index",
     "pages/index/index"
   ],
   "window": {

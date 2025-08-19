@@ -1,0 +1,7 @@
+<view class="demo-block">
+  <view class="demo-block__title">{{title}}</view>
+  <view class="demo-block__desc" wx:if="{{desc}}">{{desc}}</view>
+  <view class="demo-block__body">
+    <slot />
+  </view>
+</view>

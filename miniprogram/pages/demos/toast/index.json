@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "cc-button": "/components/cc-ui/button/button",
+    "cc-toast": "/components/cc-ui/toast/toast",
+    "demo-block": "/components/demo/demo-block/demo-block"
+  },
+  "navigationBarTitleText": "Toast"
+}
