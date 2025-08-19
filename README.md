@@ -1,6 +1,6 @@
-# CC UI - WeChat Mini Program Component Library
+# Cc-weapp
 
-A lightweight UI component library for WeChat Mini Program, inspired by Vant Weapp.
+This is a WeChat applet component library. A lightweight UI component library for WeChat Mini Program, inspired by Vant Weapp.
 
 ## Run
 
