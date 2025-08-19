@@ -1,18 +1,60 @@
 :root {
   --vp-sidebar-width: 220px;
-  --vp-layout-max-width: 1600px;
+  --vp-layout-max-width: 1700px;
+  --cc-aside-width: 500px;
+  --cc-gap: 24px;
 }
 
-.VPDoc .VPDocAside { width: 560px; }
+.VPDoc .VPDocAside { width: var(--cc-aside-width); }
 .VPDoc .VPDocOutline { max-height: calc(100vh - 120px); }
 
 .VPNavBar .container { max-width: var(--vp-layout-max-width); }
 .VPSidebar .group .items { padding-left: 8px; }
 .VPSidebar .group { padding-left: 6px; }
 
+/* Center main content heading and blocks */
+.VPContent .content {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Remove max-width limit for content container when aside presents */
+.VPDoc.has-aside .content-container {
+  max-width: none !important;
+}
+
 .cc-preview { position: relative; top: 0; }
-.cc-preview .phone { width: 400px; height: 740px; }
+/* iPhone 15 Pro Max logical viewport ~430 x 932 points, map to px for demo */
+.cc-preview .phone { width: 430px; height: 932px; max-height: calc(100vh - 120px); }
 .cc-preview .screen { height: 100%; overflow: auto; }
 
 /* Force a narrower sidebar to avoid taking too much horizontal space */
-.VPSidebar { padding-left: 16px !important; width: var(--vp-sidebar-width) !important; } 
+.VPSidebar { padding-left: 12px !important; width: var(--vp-sidebar-width) !important; }
+
+@media (min-width: 1280px) {
+  /* Main container spans full available width */
+  .VPContent {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .VPDoc.has-aside .content-container { max-width: none !important; }
+
+  /* Bring center content closer to the sidebar: smaller left padding */
+  .VPContent.has-sidebar {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width) - 32px) !important;
+    padding-right: calc(var(--cc-aside-width)) !important;
+  }
+
+  /* Fix aside on the right */
+  .VPDoc .VPDocAside {
+    position: fixed;
+    right: calc((100vw - var(--vp-layout-max-width)) / 2);
+    top: 96px;
+    bottom: 24px;
+    height: calc(100vh - 120px);
+    overflow: auto;
+  }
+} 
