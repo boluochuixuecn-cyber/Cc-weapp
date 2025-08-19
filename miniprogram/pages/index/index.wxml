@@ -1,0 +1,28 @@
+<view class="page">
+  <view class="section">
+    <view class="title">按钮 Button</view>
+    <cc-button type="primary" bind:tap="openCenter">打开居中弹窗</cc-button>
+    <view style="height: 16rpx;"></view>
+    <cc-button type="success" bind:tap="openBottom">打开底部弹窗</cc-button>
+    <view style="height: 16rpx;"></view>
+    <cc-button type="warning" bind:tap="openToast">打开 Toast</cc-button>
+    <view style="height: 16rpx;"></view>
+    <cc-button type="danger" bind:tap="openDialog">打开 Dialog</cc-button>
+  </view>
+
+  <view class="section">
+    <view class="title">图标 Icon</view>
+    <cc-icon name="success" size="40" />
+  </view>
+
+  <cc-popup show="{{showCenter}}" position="center" bind:close="closeCenter">
+    <view class="cc-popup__content">这是一个居中弹窗</view>
+  </cc-popup>
+
+  <cc-popup show="{{showBottom}}" position="bottom" bind:close="closeBottom">
+    <view class="cc-popup__content">这是一个底部弹窗</view>
+  </cc-popup>
+
+  <cc-toast id="ccToast" />
+  <cc-dialog id="ccDialog" bind:confirm="onDialogConfirm" bind:cancel="onDialogCancel" />
+</view>

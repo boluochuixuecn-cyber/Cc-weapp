@@ -1,0 +1,26 @@
+{
+  "miniprogramRoot": "miniprogram",
+  "projectname": "cc-weapp",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmRelationList": [],
+    "compileHotReLoad": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "index",
+          "pathName": "pages/index/index"
+        }
+      ]
+    }
+  }
+}

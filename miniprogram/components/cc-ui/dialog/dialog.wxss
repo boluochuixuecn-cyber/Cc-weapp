@@ -1,0 +1,8 @@
+.cc-dialog { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -40%) scale(0.96); background: #fff; width: 640rpx; border-radius: 16rpx; opacity: 0; transition: transform 0.2s ease, opacity 0.2s ease; z-index: 1001; }
+.cc-dialog.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+.cc-dialog__header { font-size: 32rpx; font-weight: 600; padding: 32rpx; }
+.cc-dialog__message { padding: 0 32rpx 32rpx; font-size: 28rpx; color: #323233; }
+.cc-dialog__footer { display: flex; border-top: 1rpx solid #f0f0f0; }
+.cc-dialog__btn { flex: 1; height: 88rpx; line-height: 88rpx; font-size: 30rpx; background: #fff; border: none; }
+.cc-dialog__btn.cancel { color: #646566; }
+.cc-dialog__btn.confirm { color: #1989fa; }

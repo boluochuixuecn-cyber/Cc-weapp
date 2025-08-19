@@ -1,0 +1,6 @@
+/* Placeholder icon font. You can replace with custom font or use base shapes */
+.cc-icon { display: inline-block; }
+/* Example builtin icons using border shapes */
+.cc-icon-success { width: 1em; height: 1em; border: 2rpx solid #07c160; border-radius: 50%; position: relative; }
+.cc-icon-success::after { content: ""; position: absolute; left: 22%; top: 48%; width: 28%; height: 2rpx; background: #07c160; transform: rotate(45deg); transform-origin: left center; }
+.cc-icon-success::before { content: ""; position: absolute; left: 44%; top: 36%; width: 48%; height: 2rpx; background: #07c160; transform: rotate(-45deg); transform-origin: left center; }

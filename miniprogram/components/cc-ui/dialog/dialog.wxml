@@ -1,0 +1,9 @@
+<overlay show="{{show}}" bind:close="onOverlayClose" />
+<view class="cc-dialog {{ show ? 'show' : '' }}" wx:if="{{show}}">
+  <view class="cc-dialog__header" wx:if="{{title}}">{{title}}</view>
+  <view class="cc-dialog__message">{{message}}</view>
+  <view class="cc-dialog__footer">
+    <button class="cc-dialog__btn cancel" wx:if="{{showCancelButton}}" bindtap="onCancel">{{cancelText}}</button>
+    <button class="cc-dialog__btn confirm" bindtap="onConfirm">{{confirmText}}</button>
+  </view>
+</view>

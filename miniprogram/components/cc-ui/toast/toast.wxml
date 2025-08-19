@@ -1,0 +1,8 @@
+<view class="cc-toast {{ show ? 'show' : '' }} cc-toast--{{type}}" style="z-index: {{zIndex}};" wx:if="{{show}}">
+  <view class="cc-toast__content">
+    <block wx:if="{{type === 'loading'}}">
+      <view class="cc-toast__spinner"></view>
+    </block>
+    <text class="cc-toast__text">{{message}}</text>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<button class="cc-button {{type}} {{plain ? 'plain' : ''}} {{block ? 'block' : ''}} {{disabled ? 'is-disabled' : ''}} {{loading ? 'is-loading' : ''}}" disabled="{{disabled}}" bindtap="onTap" open-type="{{openType}}">
+  <block wx:if="{{loading}}">
+    <view class="cc-button__loading cc-center">
+      <view class="cc-button__spinner"></view>
+    </view>
+  </block>
+  <block wx:else>
+    <slot />
+  </block>
+</button>

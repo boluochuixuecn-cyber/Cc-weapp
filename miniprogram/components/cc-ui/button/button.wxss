@@ -1,0 +1,29 @@
+@import "../_style/var.wxss";
+
+.cc-button {
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  padding: 0 24rpx;
+  border: 1px solid transparent;
+}
+.cc-button.block { display: block; width: 100%; }
+.cc-button.plain { background-color: #fff; }
+
+.cc-button.primary { background-color: #1989fa; color: #fff; }
+.cc-button.success { background-color: #07c160; color: #fff; }
+.cc-button.warning { background-color: #ff976a; color: #fff; }
+.cc-button.danger { background-color: #ee0a24; color: #fff; }
+
+.cc-button.plain.primary { color: #1989fa; border-color: #1989fa; }
+.cc-button.plain.success { color: #07c160; border-color: #07c160; }
+.cc-button.plain.warning { color: #ff976a; border-color: #ff976a; }
+.cc-button.plain.danger { color: #ee0a24; border-color: #ee0a24; }
+
+.cc-button.is-disabled { opacity: 0.5; }
+
+.cc-button__loading { display: inline-flex; align-items: center; }
+.cc-button__spinner { width: 28rpx; height: 28rpx; border: 4rpx solid #fff; border-top-color: rgba(255,255,255,0.2); border-radius: 50%; animation: cc-spin 1s linear infinite; }
+
+@keyframes cc-spin { to { transform: rotate(360deg); } }

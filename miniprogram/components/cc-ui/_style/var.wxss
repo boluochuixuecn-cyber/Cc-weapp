@@ -1,0 +1,13 @@
+/* Theme variables (WXSS doesn't support CSS variables; keep as docs + helper classes) */
+/* Primary: #1989fa, Success: #07c160, Warning: #ff976a, Danger: #ee0a24 */
+
+.cc-color-primary { color: #1989fa; }
+.cc-bg-primary { background-color: #1989fa; }
+.cc-color-success { color: #07c160; }
+.cc-bg-success { background-color: #07c160; }
+.cc-color-warning { color: #ff976a; }
+.cc-bg-warning { background-color: #ff976a; }
+.cc-color-danger { color: #ee0a24; }
+.cc-bg-danger { background-color: #ee0a24; }
+
+.cc-text-ellipsis { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

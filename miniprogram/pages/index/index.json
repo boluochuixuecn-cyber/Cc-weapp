@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "cc-button": "/components/cc-ui/button/button",
+    "cc-icon": "/components/cc-ui/icon/icon",
+    "cc-popup": "/components/cc-ui/popup/popup",
+    "cc-toast": "/components/cc-ui/toast/toast",
+    "cc-dialog": "/components/cc-ui/dialog/dialog"
+  },
+  "navigationBarTitleText": "CC UI Demo"
+}

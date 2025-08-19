@@ -1,0 +1,4 @@
+<overlay show="{{show}}" bind:close="onOverlayClose" />
+<view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }}" catchtouchmove="noop">
+  <slot />
+</view>
