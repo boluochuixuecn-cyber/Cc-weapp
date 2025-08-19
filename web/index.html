@@ -180,9 +180,24 @@ dialog.open({ title: '提示', message: '确认执行该操作？' });</pre></di
     const links = nav.querySelectorAll('a');
     const content = document.getElementById('content');
     const sections = content.querySelectorAll('section');
+    const preview = document.getElementById('preview');
+
+    function renderPreview(hash) {
+      const id = (hash || '#popup').replace('#', '');
+      const templates = {
+        popup: `<h3>Popup 预览</h3><p>点击按钮打开弹出层（示意）。</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">居中弹出</button><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">底部弹出</button></div>` ,
+        button: `<h3>Button 预览</h3><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">主要按钮</button><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">成功按钮</button></div>` ,
+        toast: `<h3>Toast 预览</h3><p>调用 showToast 展示轻提示（示意）。</p>`,
+        dialog: `<h3>Dialog 预览</h3><p>点击按钮打开对话框（示意）。</p><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">打开 Dialog</button>`,
+        overlay: `<h3>Overlay 预览</h3><div style="position:relative;height:120px;background:#f7f8fa;border:1px dashed #ddd;border-radius:8px"><div style="position:absolute;inset:0;background:rgba(0,0,0,.5)"></div></div>`,
+        icon: `<h3>Icon 预览</h3><div style="width:48px;height:48px;border:2px solid #07c160;border-radius:50%;position:relative;margin:8px 0"><div style="position:absolute;left:22%;top:48%;width:28%;height:2px;background:#07c160;transform:rotate(45deg);transform-origin:left center"></div><div style="position:absolute;left:44%;top:36%;width:48%;height:2px;background:#07c160;transform:rotate(-45deg);transform-origin:left center"></div></div>`
+      };
+      preview.innerHTML = templates[id] || '<p>预览不可用</p>';
+    }
 
     function setActive(hash) {
       links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
+      renderPreview(hash);
     }
     function onScroll() {
       let current = '#popup';
