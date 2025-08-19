@@ -1,4 +1,4 @@
-<overlay show="{{show}}" bind:close="onOverlayClose" />
-<view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }}" catchtouchmove="noop">
+<overlay show="{{show}}" z-index="{{zIndex}}" bind:close="onOverlayClose" />
+<view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }} custom-class {{ safeAreaInsetBottom ? 'cc-safe-area-bottom' : '' }}" style="z-index: {{zIndex + 1}};" catchtouchmove="noop" bindtransitionend="onTransitionEnd">
   <slot />
 </view>

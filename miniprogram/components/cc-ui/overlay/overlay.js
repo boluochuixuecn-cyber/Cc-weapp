@@ -1,7 +1,9 @@
 Component({
+  externalClasses: ['custom-class'],
   properties: {
     show: { type: Boolean, value: false },
-    closeOnClick: { type: Boolean, value: true }
+    closeOnClick: { type: Boolean, value: true },
+    zIndex: { type: Number, value: 1000 }
   },
   methods: {
     onClose() {

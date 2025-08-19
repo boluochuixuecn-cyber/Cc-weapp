@@ -4,3 +4,9 @@
 .cc-toast__spinner { width: 36rpx; height: 36rpx; border: 4rpx solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; margin-right: 12rpx; animation: cc-spin 1s linear infinite; }
 .cc-toast__text { font-size: 28rpx; }
 @keyframes cc-spin { to { transform: rotate(360deg); } }
+
+/* Position variants */
+.cc-toast.cc-toast--pos-top { top: 15%; transform: translate(-50%, 0) scale(0.96); }
+.cc-toast.cc-toast--pos-top.show { transform: translate(-50%, 0) scale(1); }
+.cc-toast.cc-toast--pos-bottom { top: auto; bottom: 15%; transform: translate(-50%, 0) scale(0.96); }
+.cc-toast.cc-toast--pos-bottom.show { transform: translate(-50%, 0) scale(1); }

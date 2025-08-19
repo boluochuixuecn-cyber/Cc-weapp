@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "miniprogram",
   "projectname": "cc-weapp",
-  "appid": "touristappid",
+  "appid": "wx12ba7868d7d5176e",
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -10,7 +10,8 @@
     "minified": true,
     "showShadowRootInWxmlPanel": true,
     "packNpmRelationList": [],
-    "compileHotReLoad": true
+    "compileHotReLoad": true,
+    "minifyWXML": true
   },
   "condition": {
     "miniprogram": {

@@ -1,7 +1,14 @@
-<button class="cc-button {{type}} {{plain ? 'plain' : ''}} {{block ? 'block' : ''}} {{disabled ? 'is-disabled' : ''}} {{loading ? 'is-loading' : ''}}" disabled="{{disabled}}" bindtap="onTap" open-type="{{openType}}">
+<button class="cc-button {{type}} {{plain ? 'plain' : ''}} {{block ? 'block' : ''}} {{disabled ? 'is-disabled' : ''}} {{loading ? 'is-loading' : ''}} size-{{size}} {{round ? 'is-round' : ''}} {{hairline ? 'is-hairline' : ''}} custom-class"
+  style="{{computedStyle}};{{customStyle}}"
+  disabled="{{disabled}}"
+  hover-class="{{hoverClass}}"
+  form-type="{{formType}}"
+  bindtap="onTap"
+  open-type="{{openType}}">
   <block wx:if="{{loading}}">
     <view class="cc-button__loading cc-center">
       <view class="cc-button__spinner"></view>
+      <text wx:if="{{loadingText}}" class="cc-button__loading-text">{{loadingText}}</text>
     </view>
   </block>
   <block wx:else>

@@ -28,3 +28,6 @@
 
 /* Content spacing */
 .cc-popup__content { padding: 32rpx; }
+
+/* Safe area helper */
+.cc-safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }

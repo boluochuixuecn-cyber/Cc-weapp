@@ -1,1 +1,1 @@
-<view class="cc-overlay {{ show ? 'show' : '' }}" catchtouchmove="noop" bindtap="onClose"></view>
+<view class="cc-overlay {{ show ? 'show' : '' }} custom-class" style="z-index: {{zIndex}};" catchtouchmove="noop" bindtap="onClose"></view>
