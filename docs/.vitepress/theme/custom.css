@@ -1,0 +1,18 @@
+:root {
+  --vp-sidebar-width: 220px;
+  --vp-layout-max-width: 1600px;
+}
+
+.VPDoc .VPDocAside { width: 560px; }
+.VPDoc .VPDocOutline { max-height: calc(100vh - 120px); }
+
+.VPNavBar .container { max-width: var(--vp-layout-max-width); }
+.VPSidebar .group .items { padding-left: 8px; }
+.VPSidebar .group { padding-left: 6px; }
+
+.cc-preview { position: relative; top: 0; }
+.cc-preview .phone { width: 400px; height: 740px; }
+.cc-preview .screen { height: 100%; overflow: auto; }
+
+/* Force a narrower sidebar to avoid taking too much horizontal space */
+.VPSidebar { padding-left: 16px !important; width: var(--vp-sidebar-width) !important; } 

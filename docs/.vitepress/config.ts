@@ -1,3 +1,12 @@
+import { webcrypto as _webcrypto } from 'node:crypto'
+
+// Ensure global webcrypto exists for Vite/VitePress when running on Node 18
+// @ts-ignore
+if (!(globalThis as any).crypto || typeof (globalThis as any).crypto.getRandomValues !== 'function') {
+  // @ts-ignore
+  ;(globalThis as any).crypto = _webcrypto as any
+}
+
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({

@@ -38,8 +38,8 @@ const html = computed(() => {
 </script>
 
 <style scoped>
-.cc-preview { position: sticky; top: 64px; }
+.cc-preview { padding: 12px 0; }
 .cc-preview h3 { margin: 0 0 12px; font-size: 16px; color: #57606a; }
-.phone { width: 320px; height: 568px; border: 8px solid #111; border-radius: 24px; background: #fafafa; overflow: hidden; }
+.phone { width: 360px; height: 640px; border: 8px solid #111; border-radius: 24px; background: #fafafa; overflow: hidden; }
 .screen { padding: 12px; overflow: auto; height: 100%; }
 </style> 

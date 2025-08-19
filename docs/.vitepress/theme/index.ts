@@ -1,6 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 import PreviewPanel from './PreviewPanel.vue'
 import { h } from 'vue'
+import './custom.css'
 
 export default {
   ...DefaultTheme,
