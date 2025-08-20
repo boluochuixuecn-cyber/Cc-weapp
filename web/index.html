@@ -68,20 +68,38 @@
 }</pre></div>
         </div>
         <div class="card">
-          <h3>代码演示</h3>
-          <div class="code"><pre>&lt;cc-button title="展示弹出层" bind:tap="showPopup" /&gt;
-&lt;cc-popup show="{{ show }}" bind:close="onClose"&gt;内容&lt;/cc-popup&gt;</pre></div>
+          <h3>基础用法</h3>
+          <div class="code"><pre>&lt;cc-popup show="{{show}}" position="center" bind:close="onClose"&gt;
+  &lt;view class="popup-content"&gt;弹窗内容&lt;/view&gt;
+&lt;/cc-popup&gt;</pre></div>
         </div>
         <div class="card">
-          <h3>功能用法 demo</h3>
-          <p>位置、关闭图标、圆角、安全区、遮罩点击关闭等。</p>
+          <h3>关闭按钮</h3>
+          <div class="code"><pre>&lt;cc-popup show="{{show}}" closeable close-icon-position="top-right"&gt;
+  &lt;view class="popup-content"&gt;弹窗内容&lt;/view&gt;
+&lt;/cc-popup&gt;</pre></div>
+        </div>
+        <div class="card">
+          <h3>自定义样式</h3>
+          <div class="code"><pre>&lt;cc-popup 
+  show="{{show}}" 
+  position="center"
+  round
+  width="600rpx"
+  height="400rpx"
+  background-color="#f5f5f5"
+  shadow
+  blur
+&gt;
+  &lt;view class="popup-content"&gt;自定义样式弹窗&lt;/view&gt;
+&lt;/cc-popup&gt;</pre></div>
         </div>
         <div class="card">
           <h3>API</h3>
           <table>
             <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>
             <tbody>
-              <tr><td>show</td><td>是否显示</td><td>boolean</td><td>false</td></tr>
+              <tr><td>show</td><td>是否显示弹窗</td><td>boolean</td><td>false</td></tr>
               <tr><td>position</td><td>弹出位置</td><td>string</td><td>center</td></tr>
               <tr><td>overlay</td><td>是否显示遮罩</td><td>boolean</td><td>true</td></tr>
               <tr><td>zIndex</td><td>层级</td><td>number</td><td>1000</td></tr>
@@ -89,6 +107,16 @@
               <tr><td>round</td><td>是否圆角</td><td>boolean</td><td>false</td></tr>
               <tr><td>closeOnClickOverlay</td><td>点击遮罩关闭</td><td>boolean</td><td>true</td></tr>
               <tr><td>closeable</td><td>显示关闭图标</td><td>boolean</td><td>false</td></tr>
+              <tr><td>closeIcon</td><td>关闭图标名称</td><td>string</td><td>close</td></tr>
+              <tr><td>closeIconPosition</td><td>关闭图标位置</td><td>string</td><td>top-right</td></tr>
+              <tr><td>closeIconSize</td><td>关闭图标大小</td><td>number</td><td>36</td></tr>
+              <tr><td>closeIconColor</td><td>关闭图标颜色</td><td>string</td><td>#969799</td></tr>
+              <tr><td>customCloseIcon</td><td>自定义关闭图标</td><td>string</td><td>''</td></tr>
+              <tr><td>width</td><td>弹窗宽度</td><td>string</td><td>''</td></tr>
+              <tr><td>height</td><td>弹窗高度</td><td>string</td><td>''</td></tr>
+              <tr><td>backgroundColor</td><td>背景色</td><td>string</td><td>#fff</td></tr>
+              <tr><td>shadow</td><td>是否显示阴影</td><td>boolean</td><td>false</td></tr>
+              <tr><td>blur</td><td>是否显示模糊效果</td><td>boolean</td><td>false</td></tr>
             </tbody>
           </table>
         </div>
@@ -185,12 +213,11 @@ dialog.open({ title: '提示', message: '确认执行该操作？' });</pre></di
     function renderPreview(hash) {
       const id = (hash || '#popup').replace('#', '');
       const templates = {
-        popup: `<h3>Popup 预览</h3><p>点击按钮打开弹出层（示意）。</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">居中弹出</button><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">底部弹出</button></div>` ,
+        popup: `<h3>Popup 预览</h3><p>完善的弹出层组件，支持多种功能：</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">居中弹出</button><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">底部弹出</button><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">顶部弹出</button></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">关闭按钮</button><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">圆角弹窗</button></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#ff9500;color:#fff;border:none;border-radius:6px">自定义样式</button><button style="padding:8px 12px;background:#ff9500;color:#fff;border:none;border-radius:6px">阴影效果</button></div>` ,
         button: `<h3>Button 预览</h3><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">主要按钮</button><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">成功按钮</button></div>` ,
         toast: `<h3>Toast 预览</h3><p>调用 showToast 展示轻提示（示意）。</p>`,
         dialog: `<h3>Dialog 预览</h3><p>点击按钮打开对话框（示意）。</p><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">打开 Dialog</button>`,
-        overlay: `<h3>Overlay 预览</h3><div style="position:relative;height:120px;background:#f7f8fa;border:1px dashed #ddd;border-radius:8px"><div style="position:absolute;inset:0;background:rgba(0,0,0,.5)"></div></div>`,
-        icon: `<h3>Icon 预览</h3><div style="width:48px;height:48px;border:2px solid #07c160;border-radius:50%;position:relative;margin:8px 0"><div style="position:absolute;left:22%;top:48%;width:28%;height:2px;background:#07c160;transform:rotate(45deg);transform-origin:left center"></div><div style="position:absolute;left:44%;top:36%;width:48%;height:2px;background:#07c160;transform:rotate(-45deg);transform-origin:left center"></div></div>`
+        overlay: `<h3>Overlay 预览</h3><div style="position:relative;height:120px;background:#f7f8fa;border:1px dashed #ddd;border-radius:8px"><div style="position:absolute;inset:0;background:rgba(0,0,0,.5)"></div></div>`
       };
       preview.innerHTML = templates[id] || '<p>预览不可用</p>';
     }

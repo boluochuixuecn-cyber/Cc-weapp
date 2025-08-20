@@ -1,28 +1,22 @@
-<view class="page">
+<view class="container">
+  <view class="title">CC UI 组件库</view>
+  
   <view class="section">
-    <view class="title">按钮 Button</view>
-    <cc-button type="primary" bind:tap="openCenter">打开居中弹窗</cc-button>
-    <view style="height: 16rpx;"></view>
-    <cc-button type="success" bind:tap="openBottom">打开底部弹窗</cc-button>
-    <view style="height: 16rpx;"></view>
-    <cc-button type="warning" bind:tap="openToast">打开 Toast</cc-button>
-    <view style="height: 16rpx;"></view>
-    <cc-button type="danger" bind:tap="openDialog">打开 Dialog</cc-button>
+    <view class="section-title">组件演示</view>
+    <view class="button-group">
+      <cc-button type="primary" bind:tap="openPopup('center')">居中弹出</cc-button>
+      <cc-button type="primary" bind:tap="openPopup('bottom')">底部弹出</cc-button>
+      <cc-button type="primary" bind:tap="openPopup('top')">顶部弹出</cc-button>
+      <cc-button type="primary" bind:tap="openPopup('left')">左侧弹出</cc-button>
+      <cc-button type="primary" bind:tap="openPopup('right')">右侧弹出</cc-button>
+    </view>
   </view>
 
-  <view class="section">
-    <view class="title">图标 Icon</view>
-    <cc-icon name="success" size="40" />
-  </view>
-
-  <cc-popup show="{{showCenter}}" position="center" bind:close="closeCenter">
-    <view class="cc-popup__content">这是一个居中弹窗</view>
+  <!-- Popup 弹窗 -->
+  <cc-popup show="{{showPopup}}" position="{{popupPosition}}" bind:close="closePopup">
+    <view class="popup-content">
+      <view class="popup-title">这是一个 {{popupPosition}} 弹窗</view>
+      <view class="popup-text">这是弹窗的内容区域，可以放置任何内容</view>
+    </view>
   </cc-popup>
-
-  <cc-popup show="{{showBottom}}" position="bottom" bind:close="closeBottom">
-    <view class="cc-popup__content">这是一个底部弹窗</view>
-  </cc-popup>
-
-  <cc-toast id="ccToast" />
-  <cc-dialog id="ccDialog" bind:confirm="onDialogConfirm" bind:cancel="onDialogCancel" />
 </view>

@@ -3,11 +3,13 @@
     <view class="section__title">介绍</view>
     <view>弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。</view>
   </view>
+  
   <view class="section">
     <view class="section__title">引入</view>
     <view class="code">{ "usingComponents": { "cc-popup": "/components/cc-ui/popup/popup" } }</view>
   </view>
-  <demo-block title="代码演示 / 不同位置">
+  
+  <demo-block title="基础用法 / 不同位置">
     <cc-button type="primary" bind:tap="open('center')">居中弹出</cc-button>
     <cc-button type="primary" bind:tap="open('bottom')">底部弹出</cc-button>
     <cc-button type="primary" bind:tap="open('top')">顶部弹出</cc-button>
@@ -15,14 +17,110 @@
     <cc-button type="primary" bind:tap="open('right')">右侧弹出</cc-button>
   </demo-block>
 
+  <demo-block title="关闭按钮">
+    <cc-button type="primary" bind:tap="openCloseable('center')">居中弹出(关闭按钮)</cc-button>
+    <cc-button type="primary" bind:tap="openCloseable('bottom')">底部弹出(关闭按钮)</cc-button>
+    <cc-button type="primary" bind:tap="openCloseable('top')">顶部弹出(关闭按钮)</cc-button>
+  </demo-block>
+
+  <demo-block title="圆角弹窗">
+    <cc-button type="primary" bind:tap="openRound('center')">居中圆角弹窗</cc-button>
+    <cc-button type="primary" bind:tap="openRound('bottom')">底部圆角弹窗</cc-button>
+  </demo-block>
+
+  <demo-block title="自定义样式">
+    <cc-button type="primary" bind:tap="openCustom('center')">自定义样式弹窗</cc-button>
+    <cc-button type="primary" bind:tap="openShadow('center')">阴影效果弹窗</cc-button>
+    <cc-button type="primary" bind:tap="openBlur('center')">模糊背景弹窗</cc-button>
+  </demo-block>
+
+  <!-- 基础弹窗 -->
   <cc-popup show="{{show}}" position="{{position}}" bind:close="onClose">
-    <view class="cc-popup__content">这是一个 {{position}} 弹窗</view>
+    <view class="cc-popup__content">
+      <view class="popup-title">这是一个 {{position}} 弹窗</view>
+      <view class="popup-text">这是弹窗的内容区域，可以放置任何内容</view>
+    </view>
+  </cc-popup>
+
+  <!-- 带关闭按钮的弹窗 -->
+  <cc-popup 
+    show="{{showCloseable}}" 
+    position="{{position}}" 
+    closeable 
+    close-icon-position="top-right"
+    bind:close="onCloseCloseable"
+  >
+    <view class="cc-popup__content">
+      <view class="popup-title">带关闭按钮的弹窗</view>
+      <view class="popup-text">点击右上角的关闭按钮可以关闭弹窗</view>
+    </view>
+  </cc-popup>
+
+  <!-- 圆角弹窗 -->
+  <cc-popup 
+    show="{{showRound}}" 
+    position="{{position}}" 
+    round 
+    closeable
+    bind:close="onCloseRound"
+  >
+    <view class="cc-popup__content">
+      <view class="popup-title">圆角弹窗</view>
+      <view class="popup-text">这是一个带有圆角效果的弹窗</view>
+    </view>
+  </cc-popup>
+
+  <!-- 自定义样式弹窗 -->
+  <cc-popup 
+    show="{{showCustom}}" 
+    position="center" 
+    width="600rpx"
+    height="400rpx"
+    background-color="#f5f5f5"
+    border-color="#e0e0e0"
+    border-width="2rpx"
+    closeable
+    bind:close="onCloseCustom"
+  >
+    <view class="cc-popup__content">
+      <view class="popup-title">自定义样式弹窗</view>
+      <view class="popup-text">自定义了尺寸、背景色和边框</view>
+    </view>
+  </cc-popup>
+
+  <!-- 阴影效果弹窗 -->
+  <cc-popup 
+    show="{{showShadow}}" 
+    position="center" 
+    shadow
+    closeable
+    bind:close="onCloseShadow"
+  >
+    <view class="cc-popup__content">
+      <view class="popup-title">阴影效果弹窗</view>
+      <view class="popup-text">这个弹窗带有阴影效果</view>
+    </view>
+  </cc-popup>
+
+  <!-- 模糊背景弹窗 -->
+  <cc-popup 
+    show="{{showBlur}}" 
+    position="center" 
+    blur
+    closeable
+    bind:close="onCloseBlur"
+  >
+    <view class="cc-popup__content">
+      <view class="popup-title">模糊背景弹窗</view>
+      <view class="popup-text">这个弹窗带有模糊背景效果</view>
+    </view>
   </cc-popup>
 
   <view class="section">
     <view class="section__title">API</view>
-    <view>show / position / overlay / zIndex / duration / round / closeOnClickOverlay / closeable / closeIcon / closeIconPosition / safeAreaInsetBottom / safeAreaInsetTop / safeAreaTabBar</view>
+    <view>show / position / overlay / zIndex / duration / round / closeOnClickOverlay / closeable / closeIcon / closeIconPosition / closeIconSize / closeIconColor / customCloseIcon / width / height / maxWidth / maxHeight / minWidth / minHeight / backgroundColor / borderColor / borderWidth / shadow / blur / safeAreaInsetBottom / safeAreaInsetTop / safeAreaTabBar</view>
   </view>
+  
   <view class="section">
     <view class="section__title">Events</view>
     <view>bind:close / bind:click-overlay / bind:before-enter / bind:after-enter / bind:after-leave</view>
