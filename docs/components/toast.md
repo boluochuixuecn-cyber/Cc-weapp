@@ -1,7 +1,10 @@
+---
+preview: toast
+---
 # Toast 轻提示
 
 ## 介绍
-轻量级反馈，支持文本与加载中。
+轻量级的提示反馈组件。
 
 ## 引入
 ```json
@@ -10,11 +13,12 @@
 
 ## 代码演示
 ```wxml
-<cc-toast id="ccToast" />
+<cc-toast id="toast" />
 ```
+
 ```js
-const toast = this.selectComponent('#ccToast');
-toast.showToast({ message: '操作成功', duration: 1500 });
+const toast = this.selectComponent('#toast')
+toast.showToast({ message: '操作成功' })
 ```
 
 ## API

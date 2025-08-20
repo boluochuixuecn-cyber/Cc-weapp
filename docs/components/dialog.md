@@ -1,3 +1,6 @@
+---
+preview: dialog
+---
 # Dialog 对话框
 
 ## 介绍
@@ -10,18 +13,13 @@
 
 ## 代码演示
 ```wxml
-<cc-dialog id="ccDialog" bind:confirm="onConfirm" bind:cancel="onCancel" />
+<cc-dialog id="dialog" bind:confirm="onConfirm" bind:cancel="onCancel" />
 ```
+
 ```js
-const dialog = this.selectComponent('#ccDialog');
-dialog.open({ title: '提示', message: '确认执行该操作？', showCancelButton: true });
+const dialog = this.selectComponent('#dialog')
+dialog.open({ title: '提示', message: '确认执行该操作？' })
 ```
 
 ## API
-- `show` `title` `message` `showCancelButton` `cancelText` `confirmText` `closeOnClickOverlay` `asyncClose`
-
-## Events
-- `bind:open` `bind:close` `bind:confirm` `bind:cancel`
-
-## 外部样式类
-- `custom-class` 
+- `show` `title` `message` `showCancelButton` `cancelText` `confirmText`

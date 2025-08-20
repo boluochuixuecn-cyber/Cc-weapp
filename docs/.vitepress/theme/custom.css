@@ -44,7 +44,7 @@
   .VPContent.has-sidebar {
     margin-left: 0 !important;
     margin-right: 0 !important;
-    padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width) - 32px) !important;
+    padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)) !important;
     padding-right: calc(var(--cc-aside-width)) !important;
   }
 
