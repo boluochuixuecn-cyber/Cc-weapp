@@ -36,7 +36,7 @@ Component({
   methods: {
     onTap(e) {
       if (this.data.disabled || this.data.loading) return;
-      this.triggerEvent('tap', e.detail || {});
+      this.triggerEvent('tap', e);
     }
   }
 });

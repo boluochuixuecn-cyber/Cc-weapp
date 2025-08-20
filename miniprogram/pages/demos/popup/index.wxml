@@ -10,28 +10,28 @@
   </view>
   
   <demo-block title="基础用法 / 不同位置">
-    <cc-button type="primary" bind:tap="open('center')">居中弹出</cc-button>
-    <cc-button type="primary" bind:tap="open('bottom')">底部弹出</cc-button>
-    <cc-button type="primary" bind:tap="open('top')">顶部弹出</cc-button>
-    <cc-button type="primary" bind:tap="open('left')">左侧弹出</cc-button>
-    <cc-button type="primary" bind:tap="open('right')">右侧弹出</cc-button>
+    <cc-button type="primary" bind:tap="open" data-position="center">居中弹出</cc-button>
+    <cc-button type="primary" bind:tap="open" data-position="bottom">底部弹出</cc-button>
+    <cc-button type="primary" bind:tap="open" data-position="top">顶部弹出</cc-button>
+    <cc-button type="primary" bind:tap="open" data-position="left">左侧弹出</cc-button>
+    <cc-button type="primary" bind:tap="open" data-position="right">右侧弹出</cc-button>
   </demo-block>
 
   <demo-block title="关闭按钮">
-    <cc-button type="primary" bind:tap="openCloseable('center')">居中弹出(关闭按钮)</cc-button>
-    <cc-button type="primary" bind:tap="openCloseable('bottom')">底部弹出(关闭按钮)</cc-button>
-    <cc-button type="primary" bind:tap="openCloseable('top')">顶部弹出(关闭按钮)</cc-button>
+    <cc-button type="primary" bind:tap="openCloseable" data-position="center">居中弹出(关闭按钮)</cc-button>
+    <cc-button type="primary" bind:tap="openCloseable" data-position="bottom">底部弹出(关闭按钮)</cc-button>
+    <cc-button type="primary" bind:tap="openCloseable" data-position="top">顶部弹出(关闭按钮)</cc-button>
   </demo-block>
 
   <demo-block title="圆角弹窗">
-    <cc-button type="primary" bind:tap="openRound('center')">居中圆角弹窗</cc-button>
-    <cc-button type="primary" bind:tap="openRound('bottom')">底部圆角弹窗</cc-button>
+    <cc-button type="primary" bind:tap="openRound" data-position="center">居中圆角弹窗</cc-button>
+    <cc-button type="primary" bind:tap="openRound" data-position="bottom">底部圆角弹窗</cc-button>
   </demo-block>
 
   <demo-block title="自定义样式">
-    <cc-button type="primary" bind:tap="openCustom('center')">自定义样式弹窗</cc-button>
-    <cc-button type="primary" bind:tap="openShadow('center')">阴影效果弹窗</cc-button>
-    <cc-button type="primary" bind:tap="openBlur('center')">模糊背景弹窗</cc-button>
+    <cc-button type="primary" bind:tap="openCustom" data-position="center">自定义样式弹窗</cc-button>
+    <cc-button type="primary" bind:tap="openShadow" data-position="center">阴影效果弹窗</cc-button>
+    <cc-button type="primary" bind:tap="openBlur" data-position="center">模糊背景弹窗</cc-button>
   </demo-block>
 
   <!-- 基础弹窗 -->

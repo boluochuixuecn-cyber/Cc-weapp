@@ -1,6 +1,6 @@
 Page({
-  data: { 
-    show: false, 
+  data: {
+    show: false,
     position: 'center',
     showCloseable: false,
     showRound: false,
@@ -8,79 +8,90 @@ Page({
     showShadow: false,
     showBlur: false
   },
-  
-  // 基础弹出方法
-  open(pos) { 
-    this.setData({ show: true, position: pos }); 
+
+  open: function(e) {
+    const position = e.currentTarget.dataset.position || 'center';
+    console.log('open called with position:', position);
+    this.setData({
+      show: true,
+      position: position
+    });
   },
-  
-  // 关闭弹窗
-  onClose() { 
-    this.setData({ show: false }); 
+
+  onClose: function() {
+    this.setData({
+      show: false
+    });
   },
-  
-  // 显示带关闭按钮的弹窗
-  openCloseable(pos) {
-    this.setData({ 
-      showCloseable: true, 
-      position: pos 
-    }); 
+
+  openCloseable: function(e) {
+    const position = e.currentTarget.dataset.position || 'center';
+    console.log('openCloseable called with position:', position);
+    this.setData({
+      showCloseable: true,
+      position: position
+    });
   },
-  
-  // 关闭带关闭按钮的弹窗
-  onCloseCloseable() { 
-    this.setData({ showCloseable: false }); 
+
+  onCloseCloseable: function() {
+    this.setData({
+      showCloseable: false
+    });
   },
-  
-  // 显示圆角弹窗
-  openRound(pos) {
-    this.setData({ 
-      showRound: true, 
-      position: pos 
-    }); 
+
+  openRound: function(e) {
+    const position = e.currentTarget.dataset.position || 'center';
+    this.setData({
+      showRound: true,
+      position: position
+    });
   },
-  
-  // 关闭圆角弹窗
-  onCloseRound() { 
-    this.setData({ showRound: false }); 
+
+  onCloseRound: function() {
+    this.setData({
+      showRound: false
+    });
   },
-  
-  // 显示自定义样式弹窗
-  openCustom(pos) {
-    this.setData({ 
-      showCustom: true, 
-      position: pos 
-    }); 
+
+  openCustom: function(e) {
+    const position = e.currentTarget.dataset.position || 'center';
+    this.setData({
+      showCustom: true,
+      position: position
+    });
   },
-  
-  // 关闭自定义样式弹窗
-  onCloseCustom() { 
-    this.setData({ showCustom: false }); 
+
+  onCloseCustom: function() {
+    this.setData({
+      showCustom: false
+    });
   },
-  
-  // 显示阴影弹窗
-  openShadow(pos) {
-    this.setData({ 
-      showShadow: true, 
-      position: pos 
-    }); 
+
+  openShadow: function(e) {
+    const position = e.currentTarget.dataset.position || 'center';
+    this.setData({
+      showShadow: true,
+      position: position
+    });
   },
-  
-  // 关闭阴影弹窗
-  onCloseShadow() { 
-    this.setData({ showShadow: false }); 
+
+  onCloseShadow: function() {
+    this.setData({
+      showShadow: false
+    });
   },
-  
-  // 显示模糊弹窗
-  openBlur(pos) {
-    this.setData({ 
-      showBlur: true, 
-      position: pos 
-    }); 
+
+  openBlur: function(e) {
+    const position = e.currentTarget.dataset.position || 'center';
+    this.setData({
+      showBlur: true,
+      position: position
+    });
   },
-  
-  // 关闭模糊弹窗
-  onCloseBlur() { 
-    this.setData({ showBlur: false }); 
+
+  onCloseBlur: function() {
+    this.setData({
+      showBlur: false
+    });
   }
 });
