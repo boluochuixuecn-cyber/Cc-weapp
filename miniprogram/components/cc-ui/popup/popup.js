@@ -1,6 +1,6 @@
 Component({
   options: { addGlobalClass: true },
-  externalClasses: ['custom-class'],
+  externalClasses: ['custom-class', 'content-class', 'close-class', 'overlay-class'],
   properties: {
     show: { type: Boolean, value: false },
     position: { type: String, value: 'center' },
@@ -18,6 +18,7 @@ Component({
     customCloseIcon: { type: String, value: '' },
     lockScroll: { type: Boolean, value: true },
     rootPortal: { type: Boolean, value: false },
+    overlayClass: { type: String, value: '' },
     safeAreaInsetBottom: { type: Boolean, value: true },
     safeAreaInsetTop: { type: Boolean, value: false },
     safeAreaTabBar: { type: Boolean, value: false },
@@ -34,20 +35,22 @@ Component({
     blur: { type: Boolean, value: false }
   },
   data: {
-    // 计算后的样式
     computedStyle: ''
   },
   observers: {
-    'show, position, round, width, height, maxWidth, maxHeight, minWidth, minHeight, backgroundColor, borderColor, borderWidth, shadow, blur': function(show, position, round, width, height, maxWidth, maxHeight, minWidth, minHeight, backgroundColor, borderColor, borderWidth, shadow, blur) {
+    'show, position, round, width, height, maxWidth, maxHeight, minWidth, minHeight, backgroundColor, borderColor, borderWidth, shadow, blur': function() {
       this.computeStyle();
+    },
+    'show': function(nextShow) {
+      if (nextShow) {
+        this.triggerEvent('open');
+      }
     }
   },
   methods: {
-    // 计算样式
     computeStyle() {
       const { width, height, maxWidth, maxHeight, minWidth, minHeight, backgroundColor, borderColor, borderWidth, shadow, blur } = this.data;
       let style = '';
-      
       if (width) style += `width: ${width}; `;
       if (height) style += `height: ${height}; `;
       if (maxWidth) style += `max-width: ${maxWidth}; `;
@@ -59,33 +62,27 @@ Component({
       if (borderWidth) style += `border-width: ${borderWidth}; `;
       if (shadow) style += `box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.12); `;
       if (blur) style += `backdrop-filter: blur(10rpx); `;
-      
       this.setData({ computedStyle: style });
     },
-    
-    // 点击遮罩层
+
     onOverlayClose() {
       this.triggerEvent('click-overlay');
       if (!this.data.closeOnClickOverlay) return;
       this.triggerEvent('close');
     },
-    
-    // 点击关闭按钮
+
     onCloseClick() {
       this.triggerEvent('close');
     },
-    
-    // 动画开始
-    onTransitionStart() { 
-      this.triggerEvent('before-enter'); 
+
+    onTransitionStart() {
+      this.triggerEvent('before-enter');
     },
-    
-    // 动画结束
-    onTransitionEnd() { 
-      this.triggerEvent(this.data.show ? 'after-enter' : 'after-leave'); 
+
+    onTransitionEnd() {
+      this.triggerEvent(this.data.show ? 'after-enter' : 'after-leave');
     },
-    
-    // 阻止触摸移动
+
     noop() {}
   }
 });

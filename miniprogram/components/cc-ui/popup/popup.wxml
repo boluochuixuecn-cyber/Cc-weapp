@@ -1,12 +1,74 @@
-<overlay wx:if="{{overlay}}" show="{{show}}" z-index="{{zIndex}}" style="{{overlayStyle}}" bind:close="onOverlayClose" />
-<view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }} custom-class {{ round ? 'is-round' : '' }} {{ safeAreaInsetBottom ? 'cc-safe-area-bottom' : '' }} {{ safeAreaInsetTop ? 'cc-safe-area-top' : '' }} {{ safeAreaTabBar ? 'cc-safe-area-tabbar' : '' }}" style="z-index: {{zIndex + 1}}; transition-duration: {{duration}}ms; {{computedStyle}}" catchtouchmove="noop" bindtransitionstart="onTransitionStart" bindtransitionend="onTransitionEnd">
-  <slot />
-  
-  <!-- 关闭按钮 -->
-  <view wx:if="{{closeable}}" class="cc-popup__close cc-popup__close--{{closeIconPosition}}" bindtap="onCloseClick">
-    <!-- 自定义图标 -->
-    <cc-icon wx:if="{{customCloseIcon}}" name="{{customCloseIcon}}" size="{{closeIconSize}}" color="{{closeIconColor}}" />
-    <!-- 默认关闭图标 -->
-    <text wx:else class="cc-popup__close-icon" style="font-size: {{closeIconSize}}rpx; color: {{closeIconColor}};">{{closeIcon}}</text>
-  </view>
-</view>
+<overlay wx:if="{{overlay}}" show="{{show}}" z-index="{{zIndex}}" style="{{overlayStyle}}" custom-class="overlay-class {{overlayClass}}" lock-scroll="{{lockScroll}}" close-on-click="{{closeOnClickOverlay}}" bind:close="onOverlayClose" />
+
+<block wx:if="{{!rootPortal}}">
+  <block wx:if="{{lockScroll && !overlay}}">
+    <view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }} custom-class {{ round ? 'is-round' : '' }} {{ safeAreaInsetBottom ? 'cc-safe-area-bottom' : '' }} {{ safeAreaInsetTop ? 'cc-safe-area-top' : '' }} {{ safeAreaTabBar ? 'cc-safe-area-tabbar' : '' }}" style="z-index: {{zIndex + 1}}; transition-duration: {{duration}}ms; {{computedStyle}}" catchtouchmove="noop" bindtransitionstart="onTransitionStart" bindtransitionend="onTransitionEnd">
+      <slot name="header" />
+      <view class="content-class">
+        <slot />
+      </view>
+      <slot name="footer" />
+
+      <!-- 关闭按钮 -->
+      <view wx:if="{{closeable}}" class="cc-popup__close cc-popup__close--{{closeIconPosition}} close-class" bindtap="onCloseClick">
+        <slot name="close-icon">
+          <cc-icon wx:if="{{customCloseIcon}}" name="{{customCloseIcon}}" size="{{closeIconSize}}" color="{{closeIconColor}}" />
+          <text wx:else class="cc-popup__close-icon" style="font-size: {{closeIconSize}}rpx; color: {{closeIconColor}};">{{closeIcon}}</text>
+        </slot>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }} custom-class {{ round ? 'is-round' : '' }} {{ safeAreaInsetBottom ? 'cc-safe-area-bottom' : '' }} {{ safeAreaInsetTop ? 'cc-safe-area-top' : '' }} {{ safeAreaTabBar ? 'cc-safe-area-tabbar' : '' }}" style="z-index: {{zIndex + 1}}; transition-duration: {{duration}}ms; {{computedStyle}}" bindtransitionstart="onTransitionStart" bindtransitionend="onTransitionEnd">
+      <slot name="header" />
+      <view class="content-class">
+        <slot />
+      </view>
+      <slot name="footer" />
+
+      <!-- 关闭按钮 -->
+      <view wx:if="{{closeable}}" class="cc-popup__close cc-popup__close--{{closeIconPosition}} close-class" bindtap="onCloseClick">
+        <slot name="close-icon">
+          <cc-icon wx:if="{{customCloseIcon}}" name="{{customCloseIcon}}" size="{{closeIconSize}}" color="{{closeIconColor}}" />
+          <text wx:else class="cc-popup__close-icon" style="font-size: {{closeIconSize}}rpx; color: {{closeIconColor}};">{{closeIcon}}</text>
+        </slot>
+      </view>
+    </view>
+  </block>
+</block>
+
+<!-- rootPortal 方案：使用内置 root-portal 组件（低版本不支持时，用户可关闭 rootPortal 降级）-->
+<root-portal wx:if="{{rootPortal}}">
+  <block wx:if="{{lockScroll && !overlay}}">
+    <view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }} custom-class {{ round ? 'is-round' : '' }} {{ safeAreaInsetBottom ? 'cc-safe-area-bottom' : '' }} {{ safeAreaInsetTop ? 'cc-safe-area-top' : '' }} {{ safeAreaTabBar ? 'cc-safe-area-tabbar' : '' }}" style="z-index: {{zIndex + 1}}; transition-duration: {{duration}}ms; {{computedStyle}}" catchtouchmove="noop" bindtransitionstart="onTransitionStart" bindtransitionend="onTransitionEnd">
+      <slot name="header" />
+      <view class="content-class">
+        <slot />
+      </view>
+      <slot name="footer" />
+
+      <view wx:if="{{closeable}}" class="cc-popup__close cc-popup__close--{{closeIconPosition}} close-class" bindtap="onCloseClick">
+        <slot name="close-icon">
+          <cc-icon wx:if="{{customCloseIcon}}" name="{{customCloseIcon}}" size="{{closeIconSize}}" color="{{closeIconColor}}" />
+          <text wx:else class="cc-popup__close-icon" style="font-size: {{closeIconSize}}rpx; color: {{closeIconColor}};">{{closeIcon}}</text>
+        </slot>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="cc-popup cc-popup--{{position}} {{ show ? 'show' : '' }} custom-class {{ round ? 'is-round' : '' }} {{ safeAreaInsetBottom ? 'cc-safe-area-bottom' : '' }} {{ safeAreaInsetTop ? 'cc-safe-area-top' : '' }} {{ safeAreaTabBar ? 'cc-safe-area-tabbar' : '' }}" style="z-index: {{zIndex + 1}}; transition-duration: {{duration}}ms; {{computedStyle}}" bindtransitionstart="onTransitionStart" bindtransitionend="onTransitionEnd">
+      <slot name="header" />
+      <view class="content-class">
+        <slot />
+      </view>
+      <slot name="footer" />
+
+      <view wx:if="{{closeable}}" class="cc-popup__close cc-popup__close--{{closeIconPosition}} close-class" bindtap="onCloseClick">
+        <slot name="close-icon">
+          <cc-icon wx:if="{{customCloseIcon}}" name="{{customCloseIcon}}" size="{{closeIconSize}}" color="{{closeIconColor}}" />
+          <text wx:else class="cc-popup__close-icon" style="font-size: {{closeIconSize}}rpx; color: {{closeIconColor}};">{{closeIcon}}</text>
+        </slot>
+      </view>
+    </view>
+  </block>
+</root-portal>

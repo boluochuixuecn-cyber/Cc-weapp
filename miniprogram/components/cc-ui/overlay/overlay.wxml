@@ -1,1 +1,6 @@
-<view class="cc-overlay {{ show ? 'show' : '' }} custom-class" style="z-index: {{zIndex}};" catchtouchmove="noop" bindtap="onClose"></view>
+<block wx:if="{{lockScroll}}">
+  <view class="cc-overlay {{ show ? 'show' : '' }} custom-class" style="z-index: {{zIndex}};" catchtouchmove="noop" bindtap="onClose"></view>
+</block>
+<block wx:else>
+  <view class="cc-overlay {{ show ? 'show' : '' }} custom-class" style="z-index: {{zIndex}};" bindtap="onClose"></view>
+</block>

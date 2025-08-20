@@ -3,7 +3,8 @@ Component({
   properties: {
     show: { type: Boolean, value: false },
     closeOnClick: { type: Boolean, value: true },
-    zIndex: { type: Number, value: 1000 }
+    zIndex: { type: Number, value: 1000 },
+    lockScroll: { type: Boolean, value: true }
   },
   methods: {
     onClose() {
