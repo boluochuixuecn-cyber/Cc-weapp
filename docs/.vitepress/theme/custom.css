@@ -23,6 +23,16 @@
   max-width: none !important;
 }
 
+/* Remove left/right padding when both sidebar and aside are present */
+.VPDoc.has-aside .VPContent.has-sidebar {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.VPDoc.has-aside .content-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .cc-preview { position: relative; top: 0; }
 /* iPhone 15 Pro Max logical viewport ~430 x 932 points, map to px for demo */
 .cc-preview .phone { width: 430px; height: 932px; max-height: calc(100vh - 120px); }
@@ -48,6 +58,12 @@
     padding-right: calc(var(--cc-aside-width)) !important;
   }
 
+  /* Ensure zero padding still wins when both sidebar and aside present */
+  .VPDoc.has-aside .VPContent.has-sidebar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
   /* Fix aside on the right */
   .VPDoc .VPDocAside {
     position: fixed;
@@ -56,5 +72,78 @@
     bottom: 24px;
     height: calc(100vh - 120px);
     overflow: auto;
+  }
+} 
+
+/* Final override: remove horizontal paddings universally for content */
+.VPContent,
+.VPContent.has-sidebar,
+.VPContent .container,
+.VPDoc .content-container,
+.VPDoc.has-aside .content-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+} 
+
+/* Responsive width caps and paddings */
+/* >= 1280px: fixed 1140 with no horizontal padding */
+@media (min-width: 1280px) {
+  .VPDoc .content-container,
+  .VPContent .container {
+    max-width: 1140px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* 960px ~ 1279px: 960 with small paddings */
+@media (min-width: 960px) and (max-width: 1279px) {
+  .VPDoc .content-container,
+  .VPContent .container {
+    max-width: 960px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* 640px ~ 959px: 840 with comfortable paddings */
+@media (min-width: 640px) and (max-width: 959px) {
+  .VPDoc .content-container,
+  .VPContent .container {
+    max-width: 840px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* < 640px: full width with safe paddings; hide aside to save space */
+@media (max-width: 639px) {
+  .VPDoc .content-container,
+  .VPContent .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .VPDoc .VPDocAside { display: none !important; }
+}
+
+/* Preview phone responsive sizing */
+@media (max-width: 959px) {
+  .cc-preview .phone {
+    width: clamp(320px, 80vw, 430px);
+    height: auto;
+    aspect-ratio: 430 / 932;
   }
 } 
