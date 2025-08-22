@@ -1,13 +1,16 @@
-import { webcrypto as _webcrypto } from 'node:crypto'
+import { webcrypto as _webcrypto } from 'node:crypto';
 
 // Ensure global webcrypto exists for Vite/VitePress when running on Node 18
 // @ts-ignore
-if (!(globalThis as any).crypto || typeof (globalThis as any).crypto.getRandomValues !== 'function') {
+if (
+  !(globalThis as any).crypto ||
+  typeof (globalThis as any).crypto.getRandomValues !== 'function'
+) {
   // @ts-ignore
-  ;(globalThis as any).crypto = _webcrypto as any
+  (globalThis as any).crypto = _webcrypto as any;
 }
 
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -16,7 +19,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '指南', link: '/' },
-      { text: '组件', link: '/components/popup' }
+      { text: '组件', link: '/components/popup' },
     ],
     sidebar: [
       {
@@ -27,11 +30,11 @@ export default defineConfig({
           { text: 'Toast 轻提示', link: '/components/toast' },
           { text: 'Dialog 对话框', link: '/components/dialog' },
           { text: 'Overlay 遮罩层', link: '/components/overlay' },
-          { text: 'Icon 图标', link: '/components/icon' }
-        ]
-      }
+          { text: 'Icon 图标', link: '/components/icon' },
+        ],
+      },
     ],
     outline: [2, 3],
-    socialLinks: []
-  }
-}) 
+    socialLinks: [],
+  },
+});

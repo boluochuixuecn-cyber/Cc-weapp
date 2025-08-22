@@ -1,9 +1,36 @@
 /* Reset & base */
-page, view, text, image, button { box-sizing: border-box; }
+page,
+view,
+text,
+image,
+button {
+  box-sizing: border-box;
+}
 
-.cc-hairline { position: relative; }
-.cc-hairline::after { content: ""; position: absolute; left: 0; bottom: 0; right: 0; border-bottom: 1rpx solid rgba(0,0,0,0.1); transform: scaleY(0.5); transform-origin: 0 0; }
+.cc-hairline {
+  position: relative;
+}
+.cc-hairline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+  transform: scaleY(0.5);
+  transform-origin: 0 0;
+}
 
-.cc-center { display: flex; align-items: center; justify-content: center; }
-.cc-row { display: flex; flex-direction: row; }
-.cc-col { display: flex; flex-direction: column; }
+.cc-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cc-row {
+  display: flex;
+  flex-direction: row;
+}
+.cc-col {
+  display: flex;
+  flex-direction: column;
+}

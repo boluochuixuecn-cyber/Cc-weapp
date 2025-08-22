@@ -6,92 +6,92 @@ Page({
     showRound: false,
     showCustom: false,
     showShadow: false,
-    showBlur: false
+    showBlur: false,
   },
 
-  open: function(e) {
+  open: function (e) {
     const position = e.currentTarget.dataset.position || 'center';
     console.log('open called with position:', position);
     this.setData({
       show: true,
-      position: position
+      position: position,
     });
   },
 
-  onClose: function() {
+  onClose: function () {
     this.setData({
-      show: false
+      show: false,
     });
   },
 
-  openCloseable: function(e) {
+  openCloseable: function (e) {
     const position = e.currentTarget.dataset.position || 'center';
     console.log('openCloseable called with position:', position);
     this.setData({
       showCloseable: true,
-      position: position
+      position: position,
     });
   },
 
-  onCloseCloseable: function() {
+  onCloseCloseable: function () {
     this.setData({
-      showCloseable: false
+      showCloseable: false,
     });
   },
 
-  openRound: function(e) {
+  openRound: function (e) {
     const position = e.currentTarget.dataset.position || 'center';
     this.setData({
       showRound: true,
-      position: position
+      position: position,
     });
   },
 
-  onCloseRound: function() {
+  onCloseRound: function () {
     this.setData({
-      showRound: false
+      showRound: false,
     });
   },
 
-  openCustom: function(e) {
+  openCustom: function (e) {
     const position = e.currentTarget.dataset.position || 'center';
     this.setData({
       showCustom: true,
-      position: position
+      position: position,
     });
   },
 
-  onCloseCustom: function() {
+  onCloseCustom: function () {
     this.setData({
-      showCustom: false
+      showCustom: false,
     });
   },
 
-  openShadow: function(e) {
+  openShadow: function (e) {
     const position = e.currentTarget.dataset.position || 'center';
     this.setData({
       showShadow: true,
-      position: position
+      position: position,
     });
   },
 
-  onCloseShadow: function() {
+  onCloseShadow: function () {
     this.setData({
-      showShadow: false
+      showShadow: false,
     });
   },
 
-  openBlur: function(e) {
+  openBlur: function (e) {
     const position = e.currentTarget.dataset.position || 'center';
     this.setData({
       showBlur: true,
-      position: position
+      position: position,
     });
   },
 
-  onCloseBlur: function() {
+  onCloseBlur: function () {
     this.setData({
-      showBlur: false
+      showBlur: false,
     });
-  }
+  },
 });

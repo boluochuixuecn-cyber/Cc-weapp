@@ -32,24 +32,37 @@ Component({
     borderColor: { type: String, value: '' },
     borderWidth: { type: String, value: '' },
     shadow: { type: Boolean, value: false },
-    blur: { type: Boolean, value: false }
+    blur: { type: Boolean, value: false },
   },
   data: {
-    computedStyle: ''
+    computedStyle: '',
   },
   observers: {
-    'show, position, round, width, height, maxWidth, maxHeight, minWidth, minHeight, backgroundColor, borderColor, borderWidth, shadow, blur': function() {
-      this.computeStyle();
-    },
-    'show': function(nextShow) {
+    'show, position, round, width, height, maxWidth, maxHeight, minWidth, minHeight, backgroundColor, borderColor, borderWidth, shadow, blur':
+      function () {
+        this.computeStyle();
+      },
+    show: function (nextShow) {
       if (nextShow) {
         this.triggerEvent('open');
       }
-    }
+    },
   },
   methods: {
     computeStyle() {
-      const { width, height, maxWidth, maxHeight, minWidth, minHeight, backgroundColor, borderColor, borderWidth, shadow, blur } = this.data;
+      const {
+        width,
+        height,
+        maxWidth,
+        maxHeight,
+        minWidth,
+        minHeight,
+        backgroundColor,
+        borderColor,
+        borderWidth,
+        shadow,
+        blur,
+      } = this.data;
       let style = '';
       if (width) style += `width: ${width}; `;
       if (height) style += `height: ${height}; `;
@@ -60,8 +73,8 @@ Component({
       if (backgroundColor) style += `background-color: ${backgroundColor}; `;
       if (borderColor) style += `border-color: ${borderColor}; `;
       if (borderWidth) style += `border-width: ${borderWidth}; `;
-      if (shadow) style += `box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.12); `;
-      if (blur) style += `backdrop-filter: blur(10rpx); `;
+      if (shadow) style += 'box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.12); ';
+      if (blur) style += 'backdrop-filter: blur(10rpx); ';
       this.setData({ computedStyle: style });
     },
 
@@ -83,6 +96,6 @@ Component({
       this.triggerEvent(this.data.show ? 'after-enter' : 'after-leave');
     },
 
-    noop() {}
-  }
+    noop() {},
+  },
 });

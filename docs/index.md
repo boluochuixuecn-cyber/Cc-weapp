@@ -26,4 +26,4 @@ CC UI 是一个轻量的微信小程序组件库，提供常用的按钮、图�
 - [Toast 轻提示](/components/toast)
 - [Dialog 对话框](/components/dialog)
 - [Overlay 遮罩层](/components/overlay)
-- [Icon 图标](/components/icon) 
+- [Icon 图标](/components/icon)

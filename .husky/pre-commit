@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 运行代码质量检查
+npm run lint
+
+# 运行代码格式检查
+npm run format:check

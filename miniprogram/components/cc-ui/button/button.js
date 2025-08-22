@@ -16,13 +16,13 @@ Component({
     loadingText: { type: String, value: '' },
     customStyle: { type: String, value: '' },
     hoverClass: { type: String, value: 'button-hover' },
-    formType: { type: String, value: '' }
+    formType: { type: String, value: '' },
   },
   data: {
-    computedStyle: ''
+    computedStyle: '',
   },
   observers: {
-    'color, plain': function(color, plain) {
+    'color, plain': function (color, plain) {
       if (!color) {
         this.setData({ computedStyle: '' });
         return;
@@ -31,12 +31,12 @@ Component({
         ? `color: ${color}; border-color: ${color};`
         : `background-color: ${color}; color: #fff; border-color: ${color};`;
       this.setData({ computedStyle: style });
-    }
+    },
   },
   methods: {
     onTap(e) {
       if (this.data.disabled || this.data.loading) return;
       this.triggerEvent('tap', e);
-    }
-  }
+    },
+  },
 });

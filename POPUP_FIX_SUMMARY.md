@@ -3,6 +3,7 @@
 ## 🐛 遇到的问题
 
 用户报告的错误：
+
 ```
 Component "pages/demos/popup/index" does not have a method "openCloseable('bottom')" to handle event "tap".
 ```
@@ -22,6 +23,7 @@ Component "pages/demos/popup/index" does not have a method "openCloseable('botto
 **问题**: button组件的`onTap`方法只传递了`e.detail`，丢失了`currentTarget.dataset`等信息
 
 **修复前**:
+
 ```javascript
 onTap(e) {
   if (this.data.disabled || this.data.loading) return;
@@ -30,6 +32,7 @@ onTap(e) {
 ```
 
 **修复后**:
+
 ```javascript
 onTap(e) {
   if (this.data.disabled || this.data.loading) return;
@@ -42,11 +45,13 @@ onTap(e) {
 **问题**: 使用`bind:tap="openCloseable('bottom')"`语法在小程序中不支持
 
 **修复前**:
+
 ```xml
 <cc-button type="primary" bind:tap="openCloseable('bottom')">底部弹出(关闭按钮)</cc-button>
 ```
 
 **修复后**:
+
 ```xml
 <cc-button type="primary" bind:tap="openCloseable" data-position="bottom">底部弹出(关闭按钮)</cc-button>
 ```
@@ -54,6 +59,7 @@ onTap(e) {
 ### 3. 更新JavaScript方法处理参数
 
 **修复前**:
+
 ```javascript
 openCloseable(pos) {
   this.setData({
@@ -64,6 +70,7 @@ openCloseable(pos) {
 ```
 
 **修复后**:
+
 ```javascript
 openCloseable(e) {
   const position = e.currentTarget.dataset.position || 'center';
@@ -88,6 +95,7 @@ openCloseable(e) {
 ## 🧪 测试验证
 
 修复后的代码现在可以正确处理：
+
 - ✅ 基础弹出功能
 - ✅ 带关闭按钮的弹窗
 - ✅ 圆角弹窗
@@ -100,11 +108,13 @@ openCloseable(e) {
 ### 小程序事件处理最佳实践
 
 1. **使用data属性传递参数**:
+
    ```xml
    <button bind:tap="handleTap" data-id="123" data-type="user">点击</button>
    ```
 
 2. **在方法中获取参数**:
+
    ```javascript
    handleTap(e) {
      const id = e.currentTarget.dataset.id;
@@ -113,10 +123,11 @@ openCloseable(e) {
    ```
 
 3. **正确传递事件对象**:
+
    ```javascript
    // 在组件中
    this.triggerEvent('tap', e);
-   
+
    // 在页面中
    handleTap(e) {
      // e 包含完整的事件信息
@@ -133,4 +144,4 @@ openCloseable(e) {
 - 自定义样式功能正常
 - 阴影和模糊效果正常
 
-用户可以在微信开发者工具中正常测试所有popup组件的功能。 
+用户可以在微信开发者工具中正常测试所有popup组件的功能。

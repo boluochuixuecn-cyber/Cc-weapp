@@ -1,5 +1,5 @@
-@import "/components/cc-ui/_style/var.wxss";
-@import "/components/cc-ui/_style/base.wxss";
+@import '/components/cc-ui/_style/var.wxss';
+@import '/components/cc-ui/_style/base.wxss';
 
 page {
   background-color: #f7f8fa;

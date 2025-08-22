@@ -1,13 +1,13 @@
-import DefaultTheme from 'vitepress/theme'
-import PreviewPanel from './PreviewPanel.vue'
-import { h } from 'vue'
-import './custom.css'
+import DefaultTheme from 'vitepress/theme';
+import PreviewPanel from './PreviewPanel.vue';
+import { h } from 'vue';
+import './custom.css';
 
 export default {
   ...DefaultTheme,
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      'aside-bottom': () => h(PreviewPanel)
-    })
-  }
-} 
+      'aside-bottom': () => h(PreviewPanel),
+    });
+  },
+};

@@ -59,8 +59,12 @@ CC UI 是一个轻量的微信小程序组件库，灵感来源于 Vant Weapp，
 ```js
 Page({
   data: { show: false },
-  showPopup() { this.setData({ show: true }); },
-  onClose() { this.setData({ show: false }); }
+  showPopup() {
+    this.setData({ show: true });
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
 });
 ```
 
@@ -105,40 +109,40 @@ Page({
 
 Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| show | 是否显示弹出层 | boolean | false |
-| zIndex | 层级 | number | 1000 |
-| overlay | 是否显示遮罩层 | boolean | true |
-| position | 弹出位置，可选 `top` `bottom` `left` `right` | string | center |
-| duration | 动画时长（ms） | number | 300 |
-| round | 是否显示圆角 | boolean | false |
-| custom-style | 自定义弹出层样式 | string | '' |
-| overlayStyle | 自定义遮罩层样式 | string | '' |
-| closeOnClickOverlay | 点击遮罩是否关闭 | boolean | true |
-| closeable | 是否显示关闭图标 | boolean | false |
-| closeIcon | 关闭图标 | string | close |
-| closeIconPosition | 关闭图标位置：`top-left` `top-right` `bottom-left` `bottom-right` | string | top-right |
-| safeAreaInsetBottom | iPhone X 底部安全区 | boolean | true |
-| safeAreaInsetTop | 顶部安全区（状态栏高度） | boolean | false |
-| safeAreaTabBar | 预留 tabbar 安全区 | boolean | false |
-| lockScroll | 是否锁定背景滚动（基础） | boolean | true |
-| rootPortal | 是否从页面中脱离（占位，受基础库限制） | boolean | false |
+| 参数                | 说明                                                              | 类型    | 默认值    |
+| ------------------- | ----------------------------------------------------------------- | ------- | --------- |
+| show                | 是否显示弹出层                                                    | boolean | false     |
+| zIndex              | 层级                                                              | number  | 1000      |
+| overlay             | 是否显示遮罩层                                                    | boolean | true      |
+| position            | 弹出位置，可选 `top` `bottom` `left` `right`                      | string  | center    |
+| duration            | 动画时长（ms）                                                    | number  | 300       |
+| round               | 是否显示圆角                                                      | boolean | false     |
+| custom-style        | 自定义弹出层样式                                                  | string  | ''        |
+| overlayStyle        | 自定义遮罩层样式                                                  | string  | ''        |
+| closeOnClickOverlay | 点击遮罩是否关闭                                                  | boolean | true      |
+| closeable           | 是否显示关闭图标                                                  | boolean | false     |
+| closeIcon           | 关闭图标                                                          | string  | close     |
+| closeIconPosition   | 关闭图标位置：`top-left` `top-right` `bottom-left` `bottom-right` | string  | top-right |
+| safeAreaInsetBottom | iPhone X 底部安全区                                               | boolean | true      |
+| safeAreaInsetTop    | 顶部安全区（状态栏高度）                                          | boolean | false     |
+| safeAreaTabBar      | 预留 tabbar 安全区                                                | boolean | false     |
+| lockScroll          | 是否锁定背景滚动（基础）                                          | boolean | true      |
+| rootPortal          | 是否从页面中脱离（占位，受基础库限制）                            | boolean | false     |
 
 Events
 
-| 事件名 | 说明 | 参数 |
-| --- | --- | --- |
-| bind:close | 关闭弹出层时触发 | - |
-| bind:click-overlay | 点击遮罩层时触发 | - |
-| bind:before-enter | 进入前触发 | - |
-| bind:after-enter | 进入后触发 | - |
-| bind:after-leave | 离开后触发 | - |
+| 事件名             | 说明             | 参数 |
+| ------------------ | ---------------- | ---- |
+| bind:close         | 关闭弹出层时触发 | -    |
+| bind:click-overlay | 点击遮罩层时触发 | -    |
+| bind:before-enter  | 进入前触发       | -    |
+| bind:after-enter   | 进入后触发       | -    |
+| bind:after-leave   | 离开后触发       | -    |
 
 外部样式类
 
-| 类名 | 说明 |
-| --- | --- |
+| 类名         | 说明         |
+| ------------ | ------------ |
 | custom-class | 根节点样式类 |
 
 ---
@@ -148,14 +152,18 @@ Events
 **介绍**：操作触发器，支持多尺寸、朴素、块级、圆角、发起表单等。
 
 - 引入：
+
 ```json
 "usingComponents": { "cc-button": "/components/cc-ui/button/button" }
 ```
+
 - 基础：
+
 ```wxml
 <cc-button type="primary">主要按钮</cc-button>
 <cc-button type="primary" loading loadingText="提交中" />
 ```
+
 - 主要 Props：`type` `size` `plain` `block` `round` `hairline` `disabled` `loading` `loadingText` `openType` `formType` `color` `customStyle`
 - 事件：`bind:tap`
 - 外部样式：`custom-class`
@@ -167,13 +175,17 @@ Events
 **介绍**：内置基础形状图标（可扩展 iconfont）。
 
 - 引入：
+
 ```json
 "usingComponents": { "cc-icon": "/components/cc-ui/icon/icon" }
 ```
+
 - 基础：
+
 ```wxml
 <cc-icon name="success" size="40" />
 ```
+
 - Props：`name` `size` `color` `customStyle`
 - 外部样式：`custom-class`
 
@@ -184,13 +196,17 @@ Events
 **介绍**：浮层遮罩，用于信息聚焦与阻断背景交互。
 
 - 引入：
+
 ```json
 "usingComponents": { "overlay": "/components/cc-ui/overlay/overlay" }
 ```
+
 - 基础：
+
 ```wxml
 <overlay show="{{show}}" bind:close="onClose" />
 ```
+
 - Props：`show` `closeOnClick` `zIndex`
 - 事件：`bind:close`（点击遮罩）
 - 外部样式：`custom-class`
@@ -202,17 +218,22 @@ Events
 **介绍**：轻量级反馈，支持文本与加载中。
 
 - 引入：
+
 ```json
 "usingComponents": { "cc-toast": "/components/cc-ui/toast/toast" }
 ```
+
 - 基础：
+
 ```wxml
 <cc-toast id="ccToast" />
 ```
+
 ```js
 const toast = this.selectComponent('#ccToast');
 toast.showToast({ message: '操作成功', duration: 1500 });
 ```
+
 - Props：`show` `type` `message` `duration` `zIndex` `position` `forbidClick`
 - 方法：`showToast(options)` `hide()`
 - 事件：`bind:open` `bind:close`
@@ -225,17 +246,22 @@ toast.showToast({ message: '操作成功', duration: 1500 });
 **介绍**：模态确认框，支持同步与异步关闭。
 
 - 引入：
+
 ```json
 "usingComponents": { "cc-dialog": "/components/cc-ui/dialog/dialog" }
 ```
+
 - 基础：
+
 ```wxml
 <cc-dialog id="ccDialog" bind:confirm="onConfirm" bind:cancel="onCancel" />
 ```
+
 ```js
 const dialog = this.selectComponent('#ccDialog');
 dialog.open({ title: '提示', message: '确认执行该操作？', showCancelButton: true });
 ```
+
 - Props：`show` `title` `message` `showCancelButton` `cancelText` `confirmText` `closeOnClickOverlay` `asyncClose`
 - 方法：`open(options)` `close()`
 - 事件：`bind:open` `bind:close` `bind:confirm` `bind:cancel`

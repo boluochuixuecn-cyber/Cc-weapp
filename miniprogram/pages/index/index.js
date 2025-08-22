@@ -1,21 +1,21 @@
 Page({
   data: {
     showPopup: false,
-    popupPosition: 'center'
+    popupPosition: 'center',
   },
 
   // 打开弹窗
   openPopup(position) {
     this.setData({
       showPopup: true,
-      popupPosition: position
+      popupPosition: position,
     });
   },
 
   // 关闭弹窗
   closePopup() {
     this.setData({
-      showPopup: false
+      showPopup: false,
     });
-  }
+  },
 });

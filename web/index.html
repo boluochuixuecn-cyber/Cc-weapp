@@ -1,87 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CC UI Web 文档与示例</title>
-  <style>
-    :root {
-      --bg: #fff;
-      --text: #1f2328;
-      --muted: #57606a;
-      --brand: #1989fa;
-      --border: #e5e6eb;
-      --code-bg: #f6f8fa;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, PingFang SC, Noto Sans SC, "Microsoft YaHei", sans-serif; }
-    a { color: var(--brand); text-decoration: none; }
-    .layout { display: grid; grid-template-columns: 260px 1fr 420px; gap: 0; height: 100vh; }
-    .sidebar { border-right: 1px solid var(--border); padding: 16px; overflow: auto; }
-    .sidebar h1 { margin: 0 0 12px; font-size: 18px; }
-    .nav { list-style: none; padding: 0; margin: 0; }
-    .nav li { margin: 6px 0; }
-    .nav a { display: block; padding: 8px 10px; border-radius: 8px; color: var(--text); }
-    .nav a.active, .nav a:hover { background: #f2f8ff; color: var(--brand); }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CC UI Web 文档与示例</title>
+    <style>
+      :root {
+        --bg: #fff;
+        --text: #1f2328;
+        --muted: #57606a;
+        --brand: #1989fa;
+        --border: #e5e6eb;
+        --code-bg: #f6f8fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          PingFang SC,
+          Noto Sans SC,
+          'Microsoft YaHei',
+          sans-serif;
+      }
+      a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 260px 1fr 420px;
+        gap: 0;
+        height: 100vh;
+      }
+      .sidebar {
+        border-right: 1px solid var(--border);
+        padding: 16px;
+        overflow: auto;
+      }
+      .sidebar h1 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+      .nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .nav li {
+        margin: 6px 0;
+      }
+      .nav a {
+        display: block;
+        padding: 8px 10px;
+        border-radius: 8px;
+        color: var(--text);
+      }
+      .nav a.active,
+      .nav a:hover {
+        background: #f2f8ff;
+        color: var(--brand);
+      }
 
-    .content { padding: 24px 32px 64px; overflow: auto; }
-    .content h2 { margin: 24px 0 12px; font-size: 22px; }
-    .content h3 { margin: 18px 0 8px; font-size: 16px; color: var(--muted); }
-    .card { border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 16px 0; background: #fff; }
-    .code { background: var(--code-bg); border: 1px solid var(--border); padding: 12px; border-radius: 8px; overflow: auto; }
-    pre { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 13px; }
+      .content {
+        padding: 24px 32px 64px;
+        overflow: auto;
+      }
+      .content h2 {
+        margin: 24px 0 12px;
+        font-size: 22px;
+      }
+      .content h3 {
+        margin: 18px 0 8px;
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .card {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px;
+        margin: 16px 0;
+        background: #fff;
+      }
+      .code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        padding: 12px;
+        border-radius: 8px;
+        overflow: auto;
+      }
+      pre {
+        margin: 0;
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+          monospace;
+        font-size: 13px;
+      }
 
-    .preview { border-left: 1px solid var(--border); padding: 16px; position: sticky; top: 0; height: 100vh; overflow: auto; }
-    .preview h2 { font-size: 18px; margin: 0 0 12px; }
-    .phone { width: 375px; height: 667px; border: 10px solid #111; border-radius: 28px; margin: 0 auto; background: #fafafa; position: relative; overflow: hidden; }
-    .phone .screen { position: absolute; inset: 0; overflow: auto; padding: 16px; }
-    .tag { display: inline-block; padding: 2px 8px; font-size: 12px; background: #f2f4f8; border-radius: 999px; color: #6b778c; margin-right: 8px; }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    th, td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; }
-    th { color: var(--muted); font-weight: 600; }
-  </style>
-</head>
-<body>
-  <div class="layout">
-    <aside class="sidebar">
-      <h1>CC UI</h1>
-      <ul class="nav" id="nav">
-        <li><a href="#popup" class="active">Popup 弹出层</a></li>
-        <li><a href="#button">Button 按钮</a></li>
-        <li><a href="#toast">Toast 轻提示</a></li>
-        <li><a href="#dialog">Dialog 对话框</a></li>
-        <li><a href="#overlay">Overlay 遮罩层</a></li>
-        <li><a href="#icon">Icon 图标</a></li>
-      </ul>
-    </aside>
+      .preview {
+        border-left: 1px solid var(--border);
+        padding: 16px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: auto;
+      }
+      .preview h2 {
+        font-size: 18px;
+        margin: 0 0 12px;
+      }
+      .phone {
+        width: 375px;
+        height: 667px;
+        border: 10px solid #111;
+        border-radius: 28px;
+        margin: 0 auto;
+        background: #fafafa;
+        position: relative;
+        overflow: hidden;
+      }
+      .phone .screen {
+        position: absolute;
+        inset: 0;
+        overflow: auto;
+        padding: 16px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        font-size: 12px;
+        background: #f2f4f8;
+        border-radius: 999px;
+        color: #6b778c;
+        margin-right: 8px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--border);
+        padding: 8px 6px;
+        text-align: left;
+      }
+      th {
+        color: var(--muted);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <h1>CC UI</h1>
+        <ul class="nav" id="nav">
+          <li><a href="#popup" class="active">Popup 弹出层</a></li>
+          <li><a href="#button">Button 按钮</a></li>
+          <li><a href="#toast">Toast 轻提示</a></li>
+          <li><a href="#dialog">Dialog 对话框</a></li>
+          <li><a href="#overlay">Overlay 遮罩层</a></li>
+          <li><a href="#icon">Icon 图标</a></li>
+        </ul>
+      </aside>
 
-    <main class="content" id="content">
-      <section id="popup">
-        <h2>Popup 弹出层</h2>
-        <div class="card"><span class="tag">介绍</span> 弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。</div>
-        <div class="card">
-          <h3>引入</h3>
-          <div class="code"><pre>{
+      <main class="content" id="content">
+        <section id="popup">
+          <h2>Popup 弹出层</h2>
+          <div class="card">
+            <span class="tag">介绍</span>
+            弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。
+          </div>
+          <div class="card">
+            <h3>引入</h3>
+            <div class="code">
+              <pre>
+{
   "usingComponents": {
     "cc-popup": "/components/cc-ui/popup/popup"
   }
-}</pre></div>
-        </div>
-        <div class="card">
-          <h3>基础用法</h3>
-          <div class="code"><pre>&lt;cc-popup show="{{show}}" position="center" bind:close="onClose"&gt;
+}</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <h3>基础用法</h3>
+            <div class="code">
+              <pre>
+&lt;cc-popup show="{{show}}" position="center" bind:close="onClose"&gt;
   &lt;view class="popup-content"&gt;弹窗内容&lt;/view&gt;
-&lt;/cc-popup&gt;</pre></div>
-        </div>
-        <div class="card">
-          <h3>关闭按钮</h3>
-          <div class="code"><pre>&lt;cc-popup show="{{show}}" closeable close-icon-position="top-right"&gt;
+&lt;/cc-popup&gt;</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <h3>关闭按钮</h3>
+            <div class="code">
+              <pre>
+&lt;cc-popup show="{{show}}" closeable close-icon-position="top-right"&gt;
   &lt;view class="popup-content"&gt;弹窗内容&lt;/view&gt;
-&lt;/cc-popup&gt;</pre></div>
-        </div>
-        <div class="card">
-          <h3>自定义样式</h3>
-          <div class="code"><pre>&lt;cc-popup 
+&lt;/cc-popup&gt;</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <h3>自定义样式</h3>
+            <div class="code">
+              <pre>
+&lt;cc-popup 
   show="{{show}}" 
   position="center"
   round
@@ -92,157 +228,369 @@
   blur
 &gt;
   &lt;view class="popup-content"&gt;自定义样式弹窗&lt;/view&gt;
-&lt;/cc-popup&gt;</pre></div>
-        </div>
-        <div class="card">
-          <h3>API</h3>
-          <table>
-            <thead><tr><th>参数</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>
-            <tbody>
-              <tr><td>show</td><td>是否显示弹窗</td><td>boolean</td><td>false</td></tr>
-              <tr><td>position</td><td>弹出位置</td><td>string</td><td>center</td></tr>
-              <tr><td>overlay</td><td>是否显示遮罩</td><td>boolean</td><td>true</td></tr>
-              <tr><td>zIndex</td><td>层级</td><td>number</td><td>1000</td></tr>
-              <tr><td>duration</td><td>动画时长</td><td>number</td><td>300</td></tr>
-              <tr><td>round</td><td>是否圆角</td><td>boolean</td><td>false</td></tr>
-              <tr><td>closeOnClickOverlay</td><td>点击遮罩关闭</td><td>boolean</td><td>true</td></tr>
-              <tr><td>closeable</td><td>显示关闭图标</td><td>boolean</td><td>false</td></tr>
-              <tr><td>closeIcon</td><td>关闭图标名称</td><td>string</td><td>close</td></tr>
-              <tr><td>closeIconPosition</td><td>关闭图标位置</td><td>string</td><td>top-right</td></tr>
-              <tr><td>closeIconSize</td><td>关闭图标大小</td><td>number</td><td>36</td></tr>
-              <tr><td>closeIconColor</td><td>关闭图标颜色</td><td>string</td><td>#969799</td></tr>
-              <tr><td>customCloseIcon</td><td>自定义关闭图标</td><td>string</td><td>''</td></tr>
-              <tr><td>width</td><td>弹窗宽度</td><td>string</td><td>''</td></tr>
-              <tr><td>height</td><td>弹窗高度</td><td>string</td><td>''</td></tr>
-              <tr><td>backgroundColor</td><td>背景色</td><td>string</td><td>#fff</td></tr>
-              <tr><td>shadow</td><td>是否显示阴影</td><td>boolean</td><td>false</td></tr>
-              <tr><td>blur</td><td>是否显示模糊效果</td><td>boolean</td><td>false</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card">
-          <h3>Events</h3>
-          <table>
-            <thead><tr><th>事件名</th><th>说明</th></tr></thead>
-            <tbody>
-              <tr><td>bind:close</td><td>关闭弹出层时触发</td></tr>
-              <tr><td>bind:click-overlay</td><td>点击遮罩层时触发</td></tr>
-              <tr><td>bind:before-enter</td><td>进入前触发</td></tr>
-              <tr><td>bind:after-enter</td><td>进入后触发</td></tr>
-              <tr><td>bind:after-leave</td><td>离开后触发</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+&lt;/cc-popup&gt;</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <h3>API</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>show</td>
+                  <td>是否显示弹窗</td>
+                  <td>boolean</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>position</td>
+                  <td>弹出位置</td>
+                  <td>string</td>
+                  <td>center</td>
+                </tr>
+                <tr>
+                  <td>overlay</td>
+                  <td>是否显示遮罩</td>
+                  <td>boolean</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>zIndex</td>
+                  <td>层级</td>
+                  <td>number</td>
+                  <td>1000</td>
+                </tr>
+                <tr>
+                  <td>duration</td>
+                  <td>动画时长</td>
+                  <td>number</td>
+                  <td>300</td>
+                </tr>
+                <tr>
+                  <td>round</td>
+                  <td>是否圆角</td>
+                  <td>boolean</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>closeOnClickOverlay</td>
+                  <td>点击遮罩关闭</td>
+                  <td>boolean</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>closeable</td>
+                  <td>显示关闭图标</td>
+                  <td>boolean</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>closeIcon</td>
+                  <td>关闭图标名称</td>
+                  <td>string</td>
+                  <td>close</td>
+                </tr>
+                <tr>
+                  <td>closeIconPosition</td>
+                  <td>关闭图标位置</td>
+                  <td>string</td>
+                  <td>top-right</td>
+                </tr>
+                <tr>
+                  <td>closeIconSize</td>
+                  <td>关闭图标大小</td>
+                  <td>number</td>
+                  <td>36</td>
+                </tr>
+                <tr>
+                  <td>closeIconColor</td>
+                  <td>关闭图标颜色</td>
+                  <td>string</td>
+                  <td>#969799</td>
+                </tr>
+                <tr>
+                  <td>customCloseIcon</td>
+                  <td>自定义关闭图标</td>
+                  <td>string</td>
+                  <td>''</td>
+                </tr>
+                <tr>
+                  <td>width</td>
+                  <td>弹窗宽度</td>
+                  <td>string</td>
+                  <td>''</td>
+                </tr>
+                <tr>
+                  <td>height</td>
+                  <td>弹窗高度</td>
+                  <td>string</td>
+                  <td>''</td>
+                </tr>
+                <tr>
+                  <td>backgroundColor</td>
+                  <td>背景色</td>
+                  <td>string</td>
+                  <td>#fff</td>
+                </tr>
+                <tr>
+                  <td>shadow</td>
+                  <td>是否显示阴影</td>
+                  <td>boolean</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>blur</td>
+                  <td>是否显示模糊效果</td>
+                  <td>boolean</td>
+                  <td>false</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <h3>Events</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>事件名</th>
+                  <th>说明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>bind:close</td>
+                  <td>关闭弹出层时触发</td>
+                </tr>
+                <tr>
+                  <td>bind:click-overlay</td>
+                  <td>点击遮罩层时触发</td>
+                </tr>
+                <tr>
+                  <td>bind:before-enter</td>
+                  <td>进入前触发</td>
+                </tr>
+                <tr>
+                  <td>bind:after-enter</td>
+                  <td>进入后触发</td>
+                </tr>
+                <tr>
+                  <td>bind:after-leave</td>
+                  <td>离开后触发</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-      <section id="button">
-        <h2>Button 按钮</h2>
-        <div class="card"><span class="tag">介绍</span> 操作触发器，支持多尺寸、朴素、块级、圆角、发起表单等。</div>
-        <div class="card">
-          <h3>引入</h3>
-          <div class="code"><pre>{ "usingComponents": { "cc-button": "/components/cc-ui/button/button" } }</pre></div>
-        </div>
-        <div class="card"><h3>代码演示</h3><div class="code"><pre>&lt;cc-button type="primary"&gt;主要按钮&lt;/cc-button&gt;</pre></div></div>
-        <div class="card"><h3>API</h3><div>type / size / plain / block / round / hairline / disabled / loading / loadingText / openType / formType / color / customStyle</div></div>
-        <div class="card"><h3>Events</h3><div>bind:tap</div></div>
-      </section>
+        <section id="button">
+          <h2>Button 按钮</h2>
+          <div class="card">
+            <span class="tag">介绍</span> 操作触发器，支持多尺寸、朴素、块级、圆角、发起表单等。
+          </div>
+          <div class="card">
+            <h3>引入</h3>
+            <div class="code">
+              <pre>{ "usingComponents": { "cc-button": "/components/cc-ui/button/button" } }</pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3>代码演示</h3>
+            <div class="code">
+              <pre>&lt;cc-button type="primary"&gt;主要按钮&lt;/cc-button&gt;</pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3>API</h3>
+            <div>
+              type / size / plain / block / round / hairline / disabled / loading / loadingText /
+              openType / formType / color / customStyle
+            </div>
+          </div>
+          <div class="card">
+            <h3>Events</h3>
+            <div>bind:tap</div>
+          </div>
+        </section>
 
-      <section id="toast">
-        <h2>Toast 轻提示</h2>
-        <div class="card"><span class="tag">介绍</span> 轻量级反馈，支持文本与加载中。</div>
-        <div class="card"><h3>引入</h3><div class="code"><pre>{ "usingComponents": { "cc-toast": "/components/cc-ui/toast/toast" } }</pre></div></div>
-        <div class="card"><h3>代码演示</h3><div class="code"><pre>// wxml
+        <section id="toast">
+          <h2>Toast 轻提示</h2>
+          <div class="card"><span class="tag">介绍</span> 轻量级反馈，支持文本与加载中。</div>
+          <div class="card">
+            <h3>引入</h3>
+            <div class="code">
+              <pre>{ "usingComponents": { "cc-toast": "/components/cc-ui/toast/toast" } }</pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3>代码演示</h3>
+            <div class="code">
+              <pre>
+// wxml
 &lt;cc-toast id="toast" /&gt;
 // js
 const toast = this.selectComponent('#toast');
-toast.showToast({ message: '操作成功' });</pre></div></div>
-        <div class="card"><h3>API</h3><div>show / type / message / duration / zIndex / position / forbidClick</div></div>
-        <div class="card"><h3>Events</h3><div>bind:open / bind:close</div></div>
-      </section>
+toast.showToast({ message: '操作成功' });</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <h3>API</h3>
+            <div>show / type / message / duration / zIndex / position / forbidClick</div>
+          </div>
+          <div class="card">
+            <h3>Events</h3>
+            <div>bind:open / bind:close</div>
+          </div>
+        </section>
 
-      <section id="dialog">
-        <h2>Dialog 对话框</h2>
-        <div class="card"><span class="tag">介绍</span> 模态确认框，支持同步与异步关闭。</div>
-        <div class="card"><h3>引入</h3><div class="code"><pre>{ "usingComponents": { "cc-dialog": "/components/cc-ui/dialog/dialog" } }</pre></div></div>
-        <div class="card"><h3>代码演示</h3><div class="code"><pre>// wxml
+        <section id="dialog">
+          <h2>Dialog 对话框</h2>
+          <div class="card"><span class="tag">介绍</span> 模态确认框，支持同步与异步关闭。</div>
+          <div class="card">
+            <h3>引入</h3>
+            <div class="code">
+              <pre>{ "usingComponents": { "cc-dialog": "/components/cc-ui/dialog/dialog" } }</pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3>代码演示</h3>
+            <div class="code">
+              <pre>
+// wxml
 &lt;cc-dialog id="dialog" bind:confirm="onConfirm" bind:cancel="onCancel" /&gt;
 // js
 const dialog = this.selectComponent('#dialog');
-dialog.open({ title: '提示', message: '确认执行该操作？' });</pre></div></div>
-        <div class="card"><h3>API</h3><div>show / title / message / showCancelButton / cancelText / confirmText / closeOnClickOverlay / asyncClose</div></div>
-        <div class="card"><h3>Events</h3><div>bind:open / bind:close / bind:confirm / bind:cancel</div></div>
-      </section>
+dialog.open({ title: '提示', message: '确认执行该操作？' });</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <h3>API</h3>
+            <div>
+              show / title / message / showCancelButton / cancelText / confirmText /
+              closeOnClickOverlay / asyncClose
+            </div>
+          </div>
+          <div class="card">
+            <h3>Events</h3>
+            <div>bind:open / bind:close / bind:confirm / bind:cancel</div>
+          </div>
+        </section>
 
-      <section id="overlay">
-        <h2>Overlay 遮罩层</h2>
-        <div class="card"><span class="tag">介绍</span> 浮层遮罩，用于信息聚焦与阻断背景交互。</div>
-        <div class="card"><h3>引入</h3><div class="code"><pre>{ "usingComponents": { "overlay": "/components/cc-ui/overlay/overlay" } }</pre></div></div>
-        <div class="card"><h3>代码演示</h3><div class="code"><pre>&lt;overlay show="{{show}}" bind:close="onClose" /&gt;</pre></div></div>
-        <div class="card"><h3>API</h3><div>show / closeOnClick / zIndex</div></div>
-        <div class="card"><h3>Events</h3><div>bind:close</div></div>
-      </section>
+        <section id="overlay">
+          <h2>Overlay 遮罩层</h2>
+          <div class="card">
+            <span class="tag">介绍</span> 浮层遮罩，用于信息聚焦与阻断背景交互。
+          </div>
+          <div class="card">
+            <h3>引入</h3>
+            <div class="code">
+              <pre>{ "usingComponents": { "overlay": "/components/cc-ui/overlay/overlay" } }</pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3>代码演示</h3>
+            <div class="code">
+              <pre>&lt;overlay show="{{show}}" bind:close="onClose" /&gt;</pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3>API</h3>
+            <div>show / closeOnClick / zIndex</div>
+          </div>
+          <div class="card">
+            <h3>Events</h3>
+            <div>bind:close</div>
+          </div>
+        </section>
 
-      <section id="icon">
-        <h2>Icon 图标</h2>
-        <div class="card"><span class="tag">介绍</span> 内置基础形状图标（可扩展 iconfont）。</div>
-        <div class="card"><h3>引入</h3><div class="code"><pre>{ "usingComponents": { "cc-icon": "/components/cc-ui/icon/icon" } }</pre></div></div>
-        <div class="card"><h3>代码演示</h3><div class="code"><pre>&lt;cc-icon name="success" size="40" /&gt;</pre></div></div>
-        <div class="card"><h3>API</h3><div>name / size / color / customStyle</div></div>
-        <div class="card"><h3>Events</h3><div>（无）</div></div>
-      </section>
-    </main>
+        <section id="icon">
+          <h2>Icon 图标</h2>
+          <div class="card">
+            <span class="tag">介绍</span> 内置基础形状图标（可扩展 iconfont）。
+          </div>
+          <div class="card">
+            <h3>引入</h3>
+            <div class="code">
+              <pre>{ "usingComponents": { "cc-icon": "/components/cc-ui/icon/icon" } }</pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3>代码演示</h3>
+            <div class="code"><pre>&lt;cc-icon name="success" size="40" /&gt;</pre></div>
+          </div>
+          <div class="card">
+            <h3>API</h3>
+            <div>name / size / color / customStyle</div>
+          </div>
+          <div class="card">
+            <h3>Events</h3>
+            <div>（无）</div>
+          </div>
+        </section>
+      </main>
 
-    <aside class="preview">
-      <h2>右侧预览</h2>
-      <div class="phone">
-        <div class="screen" id="preview">
-          <p>此处为预览示意。真实交互请在「微信开发者工具」中打开 <code>pages/index/index</code>。</p>
-          <p>在左侧切换组件，右侧保持显示该组件的示意内容。</p>
+      <aside class="preview">
+        <h2>右侧预览</h2>
+        <div class="phone">
+          <div class="screen" id="preview">
+            <p>
+              此处为预览示意。真实交互请在「微信开发者工具」中打开 <code>pages/index/index</code>。
+            </p>
+            <p>在左侧切换组件，右侧保持显示该组件的示意内容。</p>
+          </div>
         </div>
-      </div>
-    </aside>
-  </div>
+      </aside>
+    </div>
 
-  <script>
-    const nav = document.getElementById('nav');
-    const links = nav.querySelectorAll('a');
-    const content = document.getElementById('content');
-    const sections = content.querySelectorAll('section');
-    const preview = document.getElementById('preview');
+    <script>
+      const nav = document.getElementById('nav');
+      const links = nav.querySelectorAll('a');
+      const content = document.getElementById('content');
+      const sections = content.querySelectorAll('section');
+      const preview = document.getElementById('preview');
 
-    function renderPreview(hash) {
-      const id = (hash || '#popup').replace('#', '');
-      const templates = {
-        popup: `<h3>Popup 预览</h3><p>完善的弹出层组件，支持多种功能：</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">居中弹出</button><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">底部弹出</button><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">顶部弹出</button></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">关闭按钮</button><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">圆角弹窗</button></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#ff9500;color:#fff;border:none;border-radius:6px">自定义样式</button><button style="padding:8px 12px;background:#ff9500;color:#fff;border:none;border-radius:6px">阴影效果</button></div>` ,
-        button: `<h3>Button 预览</h3><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">主要按钮</button><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">成功按钮</button></div>` ,
-        toast: `<h3>Toast 预览</h3><p>调用 showToast 展示轻提示（示意）。</p>`,
-        dialog: `<h3>Dialog 预览</h3><p>点击按钮打开对话框（示意）。</p><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">打开 Dialog</button>`,
-        overlay: `<h3>Overlay 预览</h3><div style="position:relative;height:120px;background:#f7f8fa;border:1px dashed #ddd;border-radius:8px"><div style="position:absolute;inset:0;background:rgba(0,0,0,.5)"></div></div>`
-      };
-      preview.innerHTML = templates[id] || '<p>预览不可用</p>';
-    }
+      function renderPreview(hash) {
+        const id = (hash || '#popup').replace('#', '');
+        const templates = {
+          popup: `<h3>Popup 预览</h3><p>完善的弹出层组件，支持多种功能：</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">居中弹出</button><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">底部弹出</button><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">顶部弹出</button></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">关闭按钮</button><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">圆角弹窗</button></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#ff9500;color:#fff;border:none;border-radius:6px">自定义样式</button><button style="padding:8px 12px;background:#ff9500;color:#fff;border:none;border-radius:6px">阴影效果</button></div>`,
+          button: `<h3>Button 预览</h3><div style="display:flex;gap:8px;flex-wrap:wrap"><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">主要按钮</button><button style="padding:8px 12px;background:#07c160;color:#fff;border:none;border-radius:6px">成功按钮</button></div>`,
+          toast: `<h3>Toast 预览</h3><p>调用 showToast 展示轻提示（示意）。</p>`,
+          dialog: `<h3>Dialog 预览</h3><p>点击按钮打开对话框（示意）。</p><button style="padding:8px 12px;background:#1989fa;color:#fff;border:none;border-radius:6px">打开 Dialog</button>`,
+          overlay: `<h3>Overlay 预览</h3><div style="position:relative;height:120px;background:#f7f8fa;border:1px dashed #ddd;border-radius:8px"><div style="position:absolute;inset:0;background:rgba(0,0,0,.5)"></div></div>`,
+        };
+        preview.innerHTML = templates[id] || '<p>预览不可用</p>';
+      }
 
-    function setActive(hash) {
-      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
-      renderPreview(hash);
-    }
-    function onScroll() {
-      let current = '#popup';
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top <= 120 && rect.bottom >= 120) {
-          current = '#' + sec.id;
-        }
+      function setActive(hash) {
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
+        renderPreview(hash);
+      }
+      function onScroll() {
+        let current = '#popup';
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            current = '#' + sec.id;
+          }
+        });
+        setActive(current);
+      }
+      content.addEventListener('scroll', onScroll, { passive: true });
+      nav.addEventListener('click', e => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        setActive(a.getAttribute('href'));
       });
-      setActive(current);
-    }
-    content.addEventListener('scroll', onScroll, { passive: true });
-    nav.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (!a) return;
-      setActive(a.getAttribute('href'));
-    });
-    setActive('#popup');
-  </script>
-</body>
-</html> 
+      setActive('#popup');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+miniprogram_npm/
+
+# Build outputs
+dist/
+build/
+.vite/
+
+# Cache
+.cache/
+.vitepress/cache/
+**/cache/
+**/deps/
+
+# Generated files
+*.min.js
+*.min.css
+*.min.wxss
+*.min.wxml
+chunk-*.js
+
+# Package files
+package-lock.json
+yarn.lock
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+
+# Temporary
+tmp/
+temp/ 

@@ -7,7 +7,7 @@ Component({
     duration: { type: Number, value: 1500 },
     zIndex: { type: Number, value: 2000 },
     position: { type: String, value: 'middle' }, // top | middle | bottom
-    forbidClick: { type: Boolean, value: false }
+    forbidClick: { type: Boolean, value: false },
   },
   data: { timer: null },
   methods: {
@@ -25,9 +25,9 @@ Component({
       if (this.data.timer) clearTimeout(this.data.timer);
       this.setData({ show: false, timer: null });
       this.triggerEvent('close');
-    }
+    },
   },
   detached() {
     if (this.data.timer) clearTimeout(this.data.timer);
-  }
+  },
 });

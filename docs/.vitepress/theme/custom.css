@@ -3,14 +3,32 @@
   --vp-layout-max-width: 1700px;
   --cc-aside-width: 500px;
   --cc-gap: 24px;
+  /* Global brand color overrides */
+  --vp-c-brand: #a8b1ff;
+  --vp-c-brand-dark: #8f9bff;
+  --vp-c-brand-darker: #7484ff;
+  --vp-c-brand-1: #a8b1ff;
+  --vp-c-brand-2: #8f9bff;
+  --vp-c-brand-3: #7484ff;
+  --vp-c-brand-soft: color-mix(in srgb, #a8b1ff 15%, #ffffff);
 }
 
-.VPDoc .VPDocAside { width: var(--cc-aside-width); }
-.VPDoc .VPDocOutline { max-height: calc(100vh - 120px); }
+.VPDoc .VPDocAside {
+  width: var(--cc-aside-width);
+}
+.VPDoc .VPDocOutline {
+  max-height: calc(100vh - 120px);
+}
 
-.VPNavBar .container { max-width: var(--vp-layout-max-width); }
-.VPSidebar .group .items { padding-left: 8px; }
-.VPSidebar .group { padding-left: 6px; }
+.VPNavBar .container {
+  max-width: var(--vp-layout-max-width);
+}
+.VPSidebar .group .items {
+  padding-left: 8px;
+}
+.VPSidebar .group {
+  padding-left: 6px;
+}
 
 /* Center main content heading and blocks */
 .VPContent .content {
@@ -33,13 +51,26 @@
   padding-right: 0 !important;
 }
 
-.cc-preview { position: relative; top: 0; }
+.cc-preview {
+  position: relative;
+  top: 0;
+}
 /* iPhone 15 Pro Max logical viewport ~430 x 932 points, map to px for demo */
-.cc-preview .phone { width: 430px; height: 932px; max-height: calc(100vh - 120px); }
-.cc-preview .screen { height: 100%; overflow: auto; }
+.cc-preview .phone {
+  width: 430px;
+  height: 932px;
+  max-height: calc(100vh - 120px);
+}
+.cc-preview .screen {
+  height: 100%;
+  overflow: auto;
+}
 
 /* Force a narrower sidebar to avoid taking too much horizontal space */
-.VPSidebar { padding-left: 12px !important; width: var(--vp-sidebar-width) !important; }
+.VPSidebar {
+  padding-left: 12px !important;
+  width: var(--vp-sidebar-width) !important;
+}
 
 @media (min-width: 1280px) {
   /* Main container spans full available width */
@@ -48,13 +79,17 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-  .VPDoc.has-aside .content-container { max-width: none !important; }
+  .VPDoc.has-aside .content-container {
+    max-width: none !important;
+  }
 
   /* Bring center content closer to the sidebar: smaller left padding */
   .VPContent.has-sidebar {
     margin-left: 0 !important;
     margin-right: 0 !important;
-    padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)) !important;
+    padding-left: calc(
+      (100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)
+    ) !important;
     padding-right: calc(var(--cc-aside-width)) !important;
   }
 
@@ -73,7 +108,7 @@
     height: calc(100vh - 120px);
     overflow: auto;
   }
-} 
+}
 
 /* Final override: remove horizontal paddings universally for content */
 .VPContent,
@@ -83,7 +118,13 @@
 .VPDoc.has-aside .content-container {
   padding-left: 0 !important;
   padding-right: 0 !important;
-} 
+}
+
+/* Override VP NavBar title layout when sidebar exists: remove padding-left and width */
+.VPNavBar.has-sidebar .title {
+  padding-left: 30px !important;
+  width: auto !important;
+}
 
 /* Responsive width caps and paddings */
 /* >= 1280px: fixed 1140 with no horizontal padding */
@@ -136,7 +177,9 @@
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
-  .VPDoc .VPDocAside { display: none !important; }
+  .VPDoc .VPDocAside {
+    display: none !important;
+  }
 }
 
 /* Preview phone responsive sizing */
@@ -146,4 +189,4 @@
     height: auto;
     aspect-ratio: 430 / 932;
   }
-} 
+}
