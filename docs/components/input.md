@@ -29,7 +29,9 @@ preview: input
 ```js
 Page({
   data: { text: '' },
-  onInput(e) { this.setData({ text: e.detail.value }); },
+  onInput(e) {
+    this.setData({ text: e.detail.value });
+  },
 });
 ```
 
@@ -85,4 +87,4 @@ Page({
 - **bind:focus** - 聚焦时触发
 - **bind:blur** - 失焦时触发
 - **bind:confirm** - 点击键盘完成时触发
-- **bind:clear** - 点击清空时触发 
+- **bind:clear** - 点击清空时触发

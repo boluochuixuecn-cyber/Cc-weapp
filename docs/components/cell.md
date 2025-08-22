@@ -48,4 +48,4 @@ preview: cell
 
 ## Events
 
-- **bind:tap**(e) - 点击时触发 
+- **bind:tap**(e) - 点击时触发
