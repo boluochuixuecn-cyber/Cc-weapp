@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cc-cell": "/components/cc-ui/cell/cell",
+    "cc-icon": "/components/cc-ui/icon/icon"
+  },
+  "navigationBarTitleText": "Cell 单元格"
+}

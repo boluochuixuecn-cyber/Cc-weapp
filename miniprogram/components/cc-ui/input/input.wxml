@@ -1,0 +1,27 @@
+<view class="cc-input {{ customClass }} {{ error ? 'is-error' : '' }}" style="{{ customStyle }}">
+  <view class="cc-input__wrapper {{ disabled ? 'is-disabled' : '' }}">
+    <slot name="left" />
+    <input
+      class="cc-input__control"
+      value="{{ value }}"
+      placeholder="{{ placeholder }}"
+      password="{{ password }}"
+      disabled="{{ disabled }}"
+      maxlength="{{ maxlength }}"
+      type="{{ type }}"
+      confirm-type="{{ confirmType }}"
+      cursor-spacing="{{ cursorSpacing }}"
+      bindinput="onInput"
+      bindfocus="onFocus"
+      bindblur="onBlur"
+      bindconfirm="onConfirm"
+    />
+    <slot name="right" />
+    <block wx:if="{{ clearable && value }}">
+      <view class="cc-input__clear" bind:tap="onClear">×</view>
+    </block>
+  </view>
+  <block wx:if="{{ errorMessage }}">
+    <view class="cc-input__message">{{ errorMessage }}</view>
+  </block>
+</view> 

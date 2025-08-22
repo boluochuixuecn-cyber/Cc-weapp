@@ -1,0 +1,37 @@
+.cc-input {
+  width: 100%;
+}
+.cc-input__wrapper {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 28rpx;
+  border: 1rpx solid #ebedf0;
+  border-radius: 12rpx;
+  background: #fff;
+}
+.cc-input__wrapper.is-disabled {
+  opacity: 0.5;
+}
+.cc-input__control {
+  flex: 1;
+  font-size: 28rpx;
+  color: #323233;
+}
+.cc-input__clear {
+  margin-left: 12rpx;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border-radius: 50%;
+  color: #969799;
+  background: #f2f3f5;
+}
+.cc-input__message {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #ee0a24;
+}
+.cc-input.is-error .cc-input__wrapper {
+  border-color: #ee0a24;
+}

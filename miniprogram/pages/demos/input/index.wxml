@@ -1,0 +1,24 @@
+<view class="demo">
+  <view class="demo__title">基础用法</view>
+  <cc-cell title="文本">
+    <cc-input value="{{ text }}" placeholder="请输入文本" bind:input="onInput" />
+  </cc-cell>
+
+  <view class="demo__title">密码输入</view>
+  <cc-cell title="密码">
+    <cc-input value="{{ password }}" password placeholder="请输入密码" bind:input="onPasswordInput" />
+  </cc-cell>
+
+  <view class="demo__title">清空按钮</view>
+  <cc-cell title="清空">
+    <cc-input value="{{ clearable }}" clearable placeholder="可清空" bind:input="onClearableInput" />
+  </cc-cell>
+
+  <view class="demo__title">错误提示</view>
+  <cc-cell title="手机号">
+    <cc-input value="{{ phone }}" placeholder="请输入手机号" bind:input="onPhoneInput" error="{{ phoneError }}" error-message="{{ phoneErrorMessage }}" />
+  </cc-cell>
+
+  <view class="demo__title">操作</view>
+  <cc-button type="primary" bind:tap="onSubmit">提交</cc-button>
+</view> 

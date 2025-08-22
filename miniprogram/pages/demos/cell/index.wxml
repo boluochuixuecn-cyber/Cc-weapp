@@ -1,0 +1,13 @@
+<view class="demo">
+  <view class="demo__title">基础用法</view>
+  <cc-cell title="单元格" value="内容" />
+  <cc-cell title="带描述" label="辅助说明" value="内容" />
+
+  <view class="demo__title">带图标/箭头</view>
+  <cc-cell title="个人中心" is-link>
+    <view slot="icon"><cc-icon name="user" size="18" /></view>
+  </cc-cell>
+  <cc-cell title="设置" is-link>
+    <view slot="icon"><cc-icon name="setting" size="18" /></view>
+  </cc-cell>
+</view> 

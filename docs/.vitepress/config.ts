@@ -31,6 +31,8 @@ export default defineConfig({
           { text: 'Dialog 对话框', link: '/components/dialog' },
           { text: 'Overlay 遮罩层', link: '/components/overlay' },
           { text: 'Icon 图标', link: '/components/icon' },
+          { text: 'Input 输入框', link: '/components/input' },
+          { text: 'Cell 单元格', link: '/components/cell' },
         ],
       },
     ],

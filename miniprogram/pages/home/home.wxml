@@ -4,6 +4,8 @@
     <view class="home__group-title">基础</view>
     <navigator class="home__item cc-hairline" url="/pages/demos/button/index">Button 按钮</navigator>
     <navigator class="home__item cc-hairline" url="/pages/demos/icon/index">Icon 图标</navigator>
+    <navigator class="home__item cc-hairline" url="/pages/demos/cell/index">Cell 单元格</navigator>
+    <navigator class="home__item cc-hairline" url="/pages/demos/input/index">Input 输入框</navigator>
   </view>
   <view class="home__group">
     <view class="home__group-title">反馈</view>

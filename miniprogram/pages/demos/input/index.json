@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "cc-input": "/components/cc-ui/input/input",
+    "cc-cell": "/components/cc-ui/cell/cell",
+    "cc-button": "/components/cc-ui/button/button"
+  },
+  "navigationBarTitleText": "Input 输入框"
+}

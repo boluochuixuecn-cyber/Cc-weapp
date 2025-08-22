@@ -1,0 +1,42 @@
+.cc-cell {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 32rpx;
+  background: #fff;
+}
+.cc-cell--hover {
+  background: #f7f8fa;
+}
+.cc-cell__left {
+  margin-right: 24rpx;
+}
+.cc-cell__title {
+  flex: 1;
+  min-width: 0;
+}
+.cc-cell__label {
+  font-size: 28rpx;
+  color: #323233;
+}
+.cc-cell__desc {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #969799;
+}
+.cc-cell__value {
+  margin-left: 12rpx;
+  font-size: 28rpx;
+  color: #969799;
+}
+.cc-cell__right {
+  margin-left: 12rpx;
+  color: #c8c9cc;
+}
+.cc-hairline + .cc-cell::before {
+  content: ' ';
+  position: absolute;
+  left: 32rpx;
+  right: 0;
+  top: 0;
+  border-top: 1rpx solid #ebedf0;
+}

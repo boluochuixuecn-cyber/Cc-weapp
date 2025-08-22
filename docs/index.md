@@ -14,7 +14,9 @@ CC UI 是一个轻量的微信小程序组件库，提供常用的按钮、图�
     "cc-button": "/components/cc-ui/button/button",
     "cc-toast": "/components/cc-ui/toast/toast",
     "cc-dialog": "/components/cc-ui/dialog/dialog",
-    "cc-icon": "/components/cc-ui/icon/icon"
+    "cc-icon": "/components/cc-ui/icon/icon",
+    "cc-input": "/components/cc-ui/input/input",
+    "cc-cell": "/components/cc-ui/cell/cell"
   }
 }
 ```
@@ -27,3 +29,5 @@ CC UI 是一个轻量的微信小程序组件库，提供常用的按钮、图�
 - [Dialog 对话框](/components/dialog)
 - [Overlay 遮罩层](/components/overlay)
 - [Icon 图标](/components/icon)
+- [Input 输入框](/components/input)
+- [Cell 单元格](/components/cell)

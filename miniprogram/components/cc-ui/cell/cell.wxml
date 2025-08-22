@@ -1,0 +1,18 @@
+<view class="cc-cell {{ customClass }}" hover-class="cc-cell--hover" bind:tap="onTap" style="{{ customStyle }}">
+  <view class="cc-cell__left">
+    <slot name="icon" />
+  </view>
+  <view class="cc-cell__title">
+    <view class="cc-cell__label">{{ title }}</view>
+    <block wx:if="{{ label }}">
+      <view class="cc-cell__desc">{{ label }}</view>
+    </block>
+  </view>
+  <view class="cc-cell__value">
+    <slot />
+    <text wx:if="{{ value && !hasSlot }}">{{ value }}</text>
+  </view>
+  <view class="cc-cell__right">
+    <text wx:if="{{ isLink }}">›</text>
+  </view>
+</view> 

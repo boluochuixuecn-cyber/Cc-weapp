@@ -1,0 +1,8 @@
+.demo {
+  padding: 24rpx;
+}
+.demo__title {
+  margin: 24rpx 0 12rpx;
+  font-size: 28rpx;
+  color: #323233;
+}
